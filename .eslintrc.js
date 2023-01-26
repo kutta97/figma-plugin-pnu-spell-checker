@@ -25,6 +25,12 @@ module.exports = {
         labelAttributes: ['htmlFor'],
       },
     ],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: ['**/webpack.*.js'],
+      },
+    ],
   },
   globals: {
     figma: true,
