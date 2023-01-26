@@ -4,9 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --config webpack.dev.js --watch",
+    "start": "webpack --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "lint": "eslint src/**/*.{js,jsx}",
+    "watch": "yarn start --watch",
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx}'",
     "format": "prettier --write 'src/**/*.{js,jsx,css}'",
     "prepare": "husky install",
