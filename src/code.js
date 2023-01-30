@@ -1,5 +1,4 @@
 figma.showUI(__html__, {
-  themeColors: true,
   width: 400,
   height: 680,
   title: '한국어 맞춤법 검사기',
