@@ -31,6 +31,8 @@ module.exports = {
         devDependencies: ['**/webpack.*.js'],
       },
     ],
+    'import/prefer-default-export': 'off',
+    'react/prop-types': 'off',
   },
   globals: {
     figma: true,
