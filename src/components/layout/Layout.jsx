@@ -1,11 +1,14 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import { Navbar } from './Navbar';
 
 export function Layout({ children }) {
   return (
-    <main>
+    <LayoutStyled>
       <Navbar name="맞춤법 검사하기" />
       {children}
-    </main>
+    </LayoutStyled>
   );
 }
+
+const LayoutStyled = styled.main``;

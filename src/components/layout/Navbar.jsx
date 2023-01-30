@@ -1,9 +1,12 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
 export function Navbar({ name }) {
   return (
-    <header>
+    <NavbarStyled>
       <h2>{name}</h2>
-    </header>
+    </NavbarStyled>
   );
 }
+
+const NavbarStyled = styled.header``;

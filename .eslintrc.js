@@ -25,12 +25,7 @@ module.exports = {
         labelAttributes: ['htmlFor'],
       },
     ],
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: ['**/webpack.*.js'],
-      },
-    ],
+    'import/no-extraneous-dependencies': 'off',
     'import/prefer-default-export': 'off',
     'react/prop-types': 'off',
   },
