@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Layout } from './components/layout/Layout';
 
 function App() {
   const inputRef = React.useRef(null);
@@ -16,10 +17,7 @@ function App() {
   };
 
   return (
-    <main>
-      <header>
-        <h2>Rectangle Creator</h2>
-      </header>
+    <Layout>
       <section>
         <input id="input" type="number" min="0" ref={inputRef} />
         <label htmlFor="input">Rectangle Count</label>
@@ -32,7 +30,7 @@ function App() {
           Cancel
         </button>
       </footer>
-    </main>
+    </Layout>
   );
 }
 
