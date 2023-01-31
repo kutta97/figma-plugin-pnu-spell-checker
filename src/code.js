@@ -1,4 +1,8 @@
-figma.showUI(__html__, { themeColors: true, height: 300 });
+figma.showUI(__html__, {
+  width: 400,
+  height: 680,
+  title: '한국어 맞춤법 검사기',
+});
 
 figma.ui.onmessage = (msg) => {
   if (msg.type === 'create-rectangles') {
