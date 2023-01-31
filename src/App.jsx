@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Layout } from './components/layout/Layout';
 import GlobalStyle from './globalStyles';
+import { Home } from './views/home';
 
 function App() {
   const inputRef = React.useRef(null);
@@ -20,6 +21,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
+      <Home />
       <Layout>
         <section>
           <input id="input" type="number" min="0" ref={inputRef} />

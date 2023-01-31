@@ -1,5 +1,12 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import App from './App';
+import { store } from './store';
 
-ReactDOM.render(<App />, document.getElementById('react-page'));
+const root = ReactDOM.createRoot(document.getElementById('react-page'));
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
