@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { ThemeProvider } from 'styled-components';
 import { Layout } from './components/layout/Layout';
-import GlobalStyle from './globalStyles';
+import GlobalStyle from './assets/styles/globalStyles';
+import theme from './assets/styles/theme';
 
 function App() {
   const inputRef = React.useRef(null);
@@ -18,7 +20,7 @@ function App() {
   };
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Layout>
         <section>
@@ -34,7 +36,7 @@ function App() {
           </button>
         </footer>
       </Layout>
-    </>
+    </ThemeProvider>
   );
 }
 
