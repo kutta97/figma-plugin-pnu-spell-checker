@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Layout } from './components/layout/Layout';
+import GlobalStyle from './globalStyles';
 
 function App() {
   const inputRef = React.useRef(null);
@@ -17,20 +18,23 @@ function App() {
   };
 
   return (
-    <Layout>
-      <section>
-        <input id="input" type="number" min="0" ref={inputRef} />
-        <label htmlFor="input">Rectangle Count</label>
-      </section>
-      <footer>
-        <button type="button" className="brand" onClick={onCreate}>
-          Create
-        </button>
-        <button type="button" onClick={onCancel}>
-          Cancel
-        </button>
-      </footer>
-    </Layout>
+    <>
+      <GlobalStyle />
+      <Layout>
+        <section>
+          <input id="input" type="number" min="0" ref={inputRef} />
+          <label htmlFor="input">Rectangle Count</label>
+        </section>
+        <footer>
+          <button type="button" className="brand" onClick={onCreate}>
+            Create
+          </button>
+          <button type="button" onClick={onCancel}>
+            Cancel
+          </button>
+        </footer>
+      </Layout>
+    </>
   );
 }
 

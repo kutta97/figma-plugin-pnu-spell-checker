@@ -1,3 +1,6 @@
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
 :root {
   --color-bg: var(--figma-color-bg);
   --color-bg-hover: var(--figma-color-bg-hover);
@@ -103,3 +106,7 @@ img {
   height: auto;
   width: 2rem;
 }
+
+`;
+
+export default GlobalStyle;
