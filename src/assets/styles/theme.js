@@ -14,8 +14,36 @@ const colors = {
   violet: '#7B67FB',
 };
 
+const fontSizes = {
+  s18: `
+    font-size: 18px;
+    line-height: 21px;
+  `,
+  s16: `
+    font-size: 16px;
+    line-height: 19px;
+  `,
+  s15: `
+    font-size: 15px;
+    line-height: 18px;
+  `,
+  s14: `
+    font-size: 14px;
+    line-height: 17px;
+  `,
+  s13: `
+    font-size: 13px;
+    line-height: 16px;
+  `,
+  s12: `
+    font-size: 12px;
+    line-height: 14px;
+  `,
+};
+
 const theme = {
   colors,
+  fontSizes,
 };
 
 export default theme;
