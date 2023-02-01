@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { Layout } from './components/layout/Layout';
-import GlobalStyle from './assets/styles/globalStyles';
-import theme from './assets/styles/theme';
-import { Home } from './views/home';
+import { Layout } from '@Components/layout/Layout';
+import GlobalStyle from '@Assets/styles/globalStyles';
+import theme from '@Assets/styles/theme';
+import { Home } from '@Views/home';
 
 function App() {
   const inputRef = React.useRef(null);

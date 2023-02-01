@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Font15W600 } from '../../assets/styles/fonts';
+import { Font15W600 } from '@Assets/styles/fonts';
 
 export function Button({ text }) {
   return <ButtonStyled type="button">{text}</ButtonStyled>;

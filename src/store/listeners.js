@@ -1,3 +1,3 @@
-import homeListeners from '../views/home/vm/listener';
+import homeListeners from '@Views/home/vm/listener';
 
 export const listeners = [...homeListeners];
