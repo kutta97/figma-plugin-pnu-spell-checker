@@ -23,6 +23,17 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.svg$/i,
+        type: 'asset',
+        resourceQuery: /url/,
+      },
+      {
+        test: /\.svg$/i,
+        issuer: /\.jsx?$/,
+        resourceQuery: { not: [/url/] },
+        use: ['@svgr/webpack'],
+      },
     ],
   },
 
