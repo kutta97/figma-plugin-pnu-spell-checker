@@ -10,7 +10,18 @@ module.exports = {
     code: './src/code.js',
   },
 
-  resolve: { extensions: ['.jsx', '.js'] },
+  resolve: {
+    extensions: ['.jsx', '.js'],
+    alias: {
+      '@Assets': path.resolve(__dirname, 'src/assets'),
+      '@Components': path.resolve(__dirname, 'src/components'),
+      '@Data': path.resolve(__dirname, 'src/data'),
+      '@Hooks': path.resolve(__dirname, 'src/hooks'),
+      '@Services': path.resolve(__dirname, 'src/services'),
+      '@Store': path.resolve(__dirname, 'src/store'),
+      '@Views': path.resolve(__dirname, 'src/views'),
+    },
+  },
 
   module: {
     rules: [
