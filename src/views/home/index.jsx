@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
-import { useAppDispatch, useAppSelector } from '@Store/hook';
+import { useAppDispatch, useAppSelector } from '@store/hook';
 
 import { homeListenerConnector, homeNameSelector } from './vm';
 

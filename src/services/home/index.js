@@ -1,4 +1,4 @@
-import { HomeUsecase } from '@Data/home/homeUsecase';
+import { HomeUsecase } from '@data/home/homeUsecase';
 
 import { HomeService } from './homeService';
 

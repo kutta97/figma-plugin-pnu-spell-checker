@@ -1,4 +1,4 @@
-import { services } from '@Services/index';
+import { services } from '@services/index';
 
 import { homeListenerConnector, setName } from './index';
 

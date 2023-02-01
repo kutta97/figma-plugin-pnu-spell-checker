@@ -2,13 +2,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@Assets/*": ["./src/assets/*"],
-      "@Components/*": ["./src/components/*"],
-      "@Data/*": ["./src/data/*"],
-      "@Hooks/*": ["./src/hooks/*"],
-      "@Services/*": ["./src/services/*"],
-      "@Store/*": ["./src/store/*"],
-      "@Views/*": ["./src/views/*"]
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@data/*": ["./src/data/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@services/*": ["./src/services/*"],
+      "@store/*": ["./src/store/*"],
+      "@views/*": ["./src/views/*"]
     }
   }
 }

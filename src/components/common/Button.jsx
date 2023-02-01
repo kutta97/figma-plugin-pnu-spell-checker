@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Font15W600 } from '@Assets/styles/fonts';
+import { Font16W700 } from '@assets/styles/fonts';
 
 export function Button({ text }) {
   return <ButtonStyled type="button">{text}</ButtonStyled>;
@@ -19,5 +19,5 @@ const ButtonStyled = styled.button`
   color: ${({ theme }) => theme.colors.white};
   border-radius: 2px;
 
-  ${Font15W600}
+  ${Font16W700}
 `;

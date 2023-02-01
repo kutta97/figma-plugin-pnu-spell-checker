@@ -18,7 +18,7 @@ module.exports = {
   },
   plugins: ['react', 'react-hooks', 'import', 'prettier'],
   rules: {
-    'prettier/prettier': ['error', { singleQuote: true }],
+    'prettier/prettier': 0,
     'jsx-a11y/label-has-associated-control': [
       2,
       {

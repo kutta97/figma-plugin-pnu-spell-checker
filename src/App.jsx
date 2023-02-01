@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import GlobalStyle from '@Assets/styles/globalStyles';
-import theme from '@Assets/styles/theme';
+import GlobalStyle from '@assets/styles/globalStyles';
+import theme from '@assets/styles/theme';
 
-import { Layout } from '@Components/layout/Layout';
+import { Layout } from '@components/layout/Layout';
 
-import { Home } from '@Views/home';
+import { Home } from '@views/home';
 
 function App() {
   const inputRef = React.useRef(null);
