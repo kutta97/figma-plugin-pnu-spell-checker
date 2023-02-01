@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { Layout } from '@Components/layout/Layout';
+
 import GlobalStyle from '@Assets/styles/globalStyles';
 import theme from '@Assets/styles/theme';
+
+import { Layout } from '@Components/layout/Layout';
+
 import { Home } from '@Views/home';
 
 function App() {

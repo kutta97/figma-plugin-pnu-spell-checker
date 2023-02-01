@@ -1,7 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import Info from '@Assets/icons/ic_info.svg';
+
 import Filter from '@Assets/icons/ic_filter.svg';
+import Info from '@Assets/icons/ic_info.svg';
 import { Font16W700 } from '@Assets/styles/fonts';
 
 export function Navbar({ title }) {
