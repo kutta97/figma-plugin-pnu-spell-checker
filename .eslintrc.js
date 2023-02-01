@@ -29,6 +29,10 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
     'react/prop-types': 'off',
+    'react/function-component-definition': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'no-unused-vars': 'off',
+    'no-param-reassign': 'off',
   },
   globals: {
     figma: true,
