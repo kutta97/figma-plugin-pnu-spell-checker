@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { homeNameSelector, homeListenerConnector } from './vm';
-import { useAppDispatch, useAppSelector } from '../../store/hook';
+
+import { useAppDispatch, useAppSelector } from '@store/hook';
+
+import { homeListenerConnector, homeNameSelector } from './vm';
 
 export const Home = () => {
   const dispatch = useAppDispatch();

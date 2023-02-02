@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Button } from '../common/Button';
+
+import { Button } from '@components/common/Button';
 
 export function BottomButton() {
   return (

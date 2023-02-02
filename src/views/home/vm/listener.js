@@ -1,5 +1,6 @@
+import { services } from '@services/index';
+
 import { homeListenerConnector, setName } from './index';
-import { services } from '../../../services';
 
 const homeListener = async (action, listenerApi) => {
   const { dispatch } = listenerApi;

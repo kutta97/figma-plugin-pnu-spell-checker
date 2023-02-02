@@ -1,4 +1,21 @@
 {
   "presets": ["@babel/preset-react"],
-  "plugins": ["babel-plugin-styled-components"]
+  "plugins": [
+    "babel-plugin-styled-components",
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "@assets": "./src/assets",
+          "@components": "./src/components",
+          "@data": "./src/data",
+          "@hooks": "./src/hooks",
+          "@services": "./src/services",
+          "@store": "./src/store",
+          "@views": "./src/views"
+        }
+      }
+    ]
+  ]
 }
