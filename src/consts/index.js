@@ -6,7 +6,7 @@ export const PAGE_TITLE = {
   CONVERTING: '변환 중...',
   COMPLETE: '변환 완료',
 };
-export const PAGE_TYPE = [...Object.keys(PAGE_TITLE)].reduce((acc, key) => {
+export const PAGE_TYPE = Object.keys(PAGE_TITLE).reduce((acc, key) => {
   acc[key] = key;
   return acc;
 }, {});
