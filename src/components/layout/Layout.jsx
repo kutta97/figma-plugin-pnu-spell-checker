@@ -1,15 +1,19 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+import { useNavbarHook } from '@components/layout/layout.hook';
+
 import { BottomButton } from './BottomButton';
 import { Navbar } from './Navbar';
 
 export function Layout({ children }) {
+  const { pageTitle, isVisibleBackButton, bottomPageType } = useNavbarHook();
+
   return (
     <LayoutStyled>
-      <Navbar title="맞춤법 검사하기" />
+      <Navbar pageTitle={pageTitle} isVisibleBackButton={isVisibleBackButton} />
       <ContentStyled>{children}</ContentStyled>
-      <BottomButton />
+      <BottomButton pageType={bottomPageType} />
     </LayoutStyled>
   );
 }
