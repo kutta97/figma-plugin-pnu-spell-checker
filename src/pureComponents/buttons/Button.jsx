@@ -3,8 +3,12 @@ import styled from 'styled-components';
 
 import { Font16W700 } from '@assets/styles/fonts';
 
-export function Button({ text }) {
-  return <ButtonStyled type="button">{text}</ButtonStyled>;
+export function Button({ onClick, children }) {
+  return (
+    <ButtonStyled type="button" onClick={onClick}>
+      {children}
+    </ButtonStyled>
+  );
 }
 
 const ButtonStyled = styled.button`
