@@ -6,16 +6,23 @@ import Filter from '@assets/icons/ic_filter.svg';
 import Info from '@assets/icons/ic_info.svg';
 import { Font16W700 } from '@assets/styles/fonts';
 
-export function Navbar({ pageTitle, isVisibleBackButton }) {
+import { useNavbarVM } from '@components/layout/navbarVM';
+
+export function Navbar() {
+  const { pageTitle, isVisibleBackButton, prev } = useNavbarVM();
   return (
     <NavbarStyled>
-      {isVisibleBackButton ? (
-        <Back width={24} height={24} />
-      ) : (
-        <Info width={24} height={24} />
-      )}
+      <div className="left-icon">
+        {isVisibleBackButton ? (
+          <Back width={24} height={24} onClick={prev} />
+        ) : (
+          <Info width={24} height={24} />
+        )}
+      </div>
       <h2>{pageTitle}</h2>
-      {!isVisibleBackButton && <Filter width={24} height={24} />}
+      <div className="right-icon">
+        {!isVisibleBackButton && <Filter width={24} height={24} />}
+      </div>
     </NavbarStyled>
   );
 }
@@ -24,11 +31,24 @@ const NavbarStyled = styled.header`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 14px 16px;
+  justify-content: center;
+  position: relative;
+  padding: 16px 0 17px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray5};
 
   h2 {
     ${Font16W700}
+  }
+
+  .left-icon {
+    position: absolute;
+    top: 14px;
+    left: 16px;
+  }
+
+  .right-icon {
+    position: absolute;
+    top: 14px;
+    right: 16px;
   }
 `;
