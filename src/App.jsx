@@ -2,19 +2,22 @@ import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
+import { rootSelector } from '@store/root';
+
 import GlobalStyle from '@assets/styles/globalStyles';
 import theme from '@assets/styles/theme';
 
 import { Layout } from '@components/layout/Layout';
 
+import { Detail } from '@views/detail';
 import { Home } from '@views/home';
-import { homeSelector } from '@views/home/vm';
+import { Result } from '@views/result';
 
 import { PAGE_TYPE } from './consts';
 
 function App() {
   const inputRef = React.useRef(null);
-  const { pageType } = useSelector(homeSelector);
+  const { pageType } = useSelector(rootSelector);
 
   const onCreate = () => {
     const count = Number(inputRef.current?.value || 0);
@@ -30,7 +33,13 @@ function App() {
 
   const renderBody = () => {
     switch (pageType) {
-      case PAGE_TYPE.MAIN:
+      case PAGE_TYPE.DETAIL: {
+        return <Detail />;
+      }
+      case PAGE_TYPE.RESULT: {
+        return <Result />;
+      }
+      case PAGE_TYPE.HOME:
       default: {
         return <Home />;
       }
