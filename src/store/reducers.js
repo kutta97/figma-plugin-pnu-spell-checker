@@ -1,5 +1,7 @@
-import { homeVM } from '@views/home/vm';
+import { homeReducer } from '@store/home';
+import { rootReducer } from '@store/root';
 
 export const reducers = {
-  homeVM,
+  homeReducer,
+  rootReducer,
 };
