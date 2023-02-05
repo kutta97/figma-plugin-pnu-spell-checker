@@ -33,7 +33,7 @@ const NavbarStyled = styled.header`
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 16px 0 17px;
+  padding: 16.5px 0 16.5px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray5};
 
   h2 {
