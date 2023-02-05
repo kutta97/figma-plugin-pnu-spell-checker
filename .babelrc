@@ -9,11 +9,13 @@
         "alias": {
           "@assets": "./src/assets",
           "@components": "./src/components",
+          "@pureComponents": "./src/pureComponents",
           "@data": "./src/data",
           "@hooks": "./src/hooks",
           "@services": "./src/services",
           "@store": "./src/store",
-          "@views": "./src/views"
+          "@views": "./src/views",
+          "@consts": "./src/consts"
         }
       }
     ]

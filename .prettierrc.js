@@ -5,12 +5,14 @@ module.exports = {
   singleQuote: true,
 
   importOrder: [
+    '^@consts/(.*)$',
+    '^@pureComponents/(.*)$',
     '^@data/(.*)$',
     '^@services/(.*)$',
     '^@store/(.*)$',
     '^@assets/(.*)$',
-    '^@components/(.*)$',
     '^@hooks/(.*)$',
+    '^@components/(.*)$',
     '^@views/(.*)$',
     '^[./]',
   ],

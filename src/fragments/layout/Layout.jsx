@@ -1,15 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { BottomButton } from './BottomButton';
 import { Navbar } from './Navbar';
 
 export function Layout({ children }) {
   return (
     <LayoutStyled>
-      <Navbar title="맞춤법 검사하기" />
+      <Navbar />
       <ContentStyled>{children}</ContentStyled>
-      <BottomButton />
     </LayoutStyled>
   );
 }

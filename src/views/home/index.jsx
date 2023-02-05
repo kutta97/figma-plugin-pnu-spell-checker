@@ -1,21 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import { useAppDispatch, useAppSelector } from '@store/hook';
+import { useHomeVM } from '@views/home/homeVM';
 
-import { homeListenerConnector, homeNameSelector } from './vm';
+import { Button } from '../../components/buttons/Button';
 
 export const Home = () => {
-  const dispatch = useAppDispatch();
-  const home = useAppSelector(homeNameSelector);
-
-  useEffect(() => {
-    dispatch(homeListenerConnector());
-  }, [dispatch]);
-
+  const { name, search } = useHomeVM();
   return (
     <HomeStyled>
-      Hy Home <div>{home}</div>
+      Hy Home <div>{name}</div>
+      <Button onClick={search}>검색하기</Button>
     </HomeStyled>
   );
 };

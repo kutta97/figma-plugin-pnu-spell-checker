@@ -20,6 +20,8 @@ module.exports = {
       '@services': path.resolve(__dirname, 'src/services'),
       '@store': path.resolve(__dirname, 'src/store'),
       '@views': path.resolve(__dirname, 'src/views'),
+      '@pureComponents': path.resolve(__dirname, 'src/pureComponents'),
+      '@consts': path.resolve(__dirname, 'src/consts'),
     },
   },
 

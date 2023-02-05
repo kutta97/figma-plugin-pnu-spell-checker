@@ -1,3 +1,4 @@
-import homeListeners from '@views/home/vm/listener';
+import homeListeners from '@store/home/listener';
+import rootListeners from '@store/root/listener';
 
-export const listeners = [...homeListeners];
+export const listeners = [...rootListeners, ...homeListeners];
