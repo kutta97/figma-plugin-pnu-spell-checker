@@ -6,7 +6,7 @@ import Filter from '@assets/icons/ic_filter.svg';
 import Info from '@assets/icons/ic_info.svg';
 import { Font16W700 } from '@assets/styles/fonts';
 
-import { useNavbarVM } from '@components/layout/navbarVM';
+import { useNavbarVM } from './navbarVM';
 
 export function Navbar() {
   const { pageTitle, isVisibleBackButton, prev } = useNavbarVM();

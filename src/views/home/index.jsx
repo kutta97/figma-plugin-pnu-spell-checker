@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Button } from '@pureComponents/buttons/Button';
-
 import { useHomeVM } from '@views/home/homeVM';
+
+import { Button } from '../../components/buttons/Button';
 
 export const Home = () => {
   const { name, search } = useHomeVM();

@@ -7,13 +7,12 @@ import { rootSelector } from '@store/root';
 import GlobalStyle from '@assets/styles/globalStyles';
 import theme from '@assets/styles/theme';
 
-import { Layout } from '@components/layout/Layout';
-
 import { Detail } from '@views/detail';
 import { Home } from '@views/home';
 import { Result } from '@views/result';
 
 import { PAGE_TYPE } from './consts';
+import { Layout } from './fragments/layout/Layout';
 
 function App() {
   const inputRef = React.useRef(null);
