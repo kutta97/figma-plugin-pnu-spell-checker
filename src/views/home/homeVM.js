@@ -1,5 +1,6 @@
-import { PAGE_TYPE } from '@consts/index';
 import { useEffect } from 'react';
+
+import { PAGE_TYPE } from '@consts/index';
 
 import { homeListenerConnector, homeNameSelector } from '@store/home';
 import { useAppDispatch, useAppSelector } from '@store/hook';

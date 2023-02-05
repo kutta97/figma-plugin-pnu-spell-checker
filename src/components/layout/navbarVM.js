@@ -1,6 +1,7 @@
-import { PAGE_TITLE, PAGE_TYPE } from '@consts/index';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
+
+import { PAGE_TITLE, PAGE_TYPE } from '@consts/index';
 
 import { rootSelector } from '@store/root';
 

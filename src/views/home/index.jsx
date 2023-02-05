@@ -1,6 +1,7 @@
-import { Button } from '@pureComponents/buttons/Button';
 import React from 'react';
 import styled from 'styled-components';
+
+import { Button } from '@pureComponents/buttons/Button';
 
 import { useHomeVM } from '@views/home/homeVM';
 

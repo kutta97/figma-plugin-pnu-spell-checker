@@ -1,5 +1,6 @@
-import { PAGE_TYPE } from '@consts/index';
 import { createSlice } from '@reduxjs/toolkit';
+
+import { PAGE_TYPE } from '@consts/index';
 
 const initialState = {
   pageType: PAGE_TYPE.HOME,
