@@ -1,17 +1,28 @@
-import { services } from '@services/index';
+import { PAGE_TYPE } from '@consts/index';
 
-import { homeListenerConnector, setName } from './index';
+import request from '@utils/request';
+import { sleep } from '@utils/timer';
 
-const homeListener = async (action, listenerApi) => {
+import { nextPage } from '@store/root';
+
+import { searchListenerConnect } from './index';
+
+const searchListener = async (action, listenerApi) => {
   const { dispatch } = listenerApi;
-  const { home } = listenerApi.getState();
 
-  const data = (await services.homeServices.homeData).transferData();
-  dispatch(setName(data));
+  dispatch(nextPage({ page: PAGE_TYPE.SEARCHING }));
+
+  try {
+    // TODO Change request.promise to request.fetch and use the Search API
+    await request.promise(() => sleep(3000));
+    dispatch(nextPage({ page: PAGE_TYPE.RESULT, isNotRecord: true }));
+  } catch (e) {
+    /* empty */
+  }
 };
 
 const homeListeners = [
-  { actionCreator: homeListenerConnector, effect: homeListener },
+  { actionCreator: searchListenerConnect, effect: searchListener },
 ];
 
 export default homeListeners;
