@@ -9,16 +9,19 @@ import { Font16W700 } from '@assets/styles/fonts';
 import { useNavbarVM } from './navbarVM';
 
 export function Navbar() {
-  const { pageTitle, isVisibleBackButton, prev } = useNavbarVM();
+  const { pageTitle, isVisibleBackButton, isVisibleLeftButton, prev } =
+    useNavbarVM();
   return (
     <NavbarStyled>
-      <div className="left-icon">
-        {isVisibleBackButton ? (
-          <Back width={24} height={24} onClick={prev} />
-        ) : (
-          <Info width={24} height={24} />
-        )}
-      </div>
+      {isVisibleLeftButton && (
+        <div className="left-icon">
+          {isVisibleBackButton ? (
+            <Back width={24} height={24} onClick={prev} />
+          ) : (
+            <Info width={24} height={24} />
+          )}
+        </div>
+      )}
       <h2>{pageTitle}</h2>
       <div className="right-icon">
         {!isVisibleBackButton && <Filter width={24} height={24} />}
