@@ -15,7 +15,8 @@
           "@store": "./src/store",
           "@views": "./src/views",
           "@fragments": "./src/fragments",
-          "@consts": "./src/consts"
+          "@consts": "./src/consts",
+          "@utils": "./src/utils"
         }
       }
     ]
