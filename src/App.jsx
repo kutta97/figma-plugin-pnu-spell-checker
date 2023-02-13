@@ -36,7 +36,7 @@ function App() {
   };
 
   useEffect(() => {
-    return () => request.celar();
+    return () => request.clear();
   }, []);
 
   const renderBody = () => {

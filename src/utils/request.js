@@ -5,7 +5,7 @@ const request = () => {
       abortController.abort();
       abortController = new AbortController();
     },
-    celar: () => {
+    clear: () => {
       abortController = null;
     },
     promise: async (callback) => {
