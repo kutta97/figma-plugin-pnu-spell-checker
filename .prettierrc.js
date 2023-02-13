@@ -6,6 +6,7 @@ module.exports = {
 
   importOrder: [
     '^@consts/(.*)$',
+    '^@utils/(.*)$',
     '^@components/(.*)$',
     '^@data/(.*)$',
     '^@services/(.*)$',

@@ -8,7 +8,7 @@ export const homeSlice = createSlice({
   name: 'home',
   initialState,
   reducers: {
-    homeListenerConnector: (state, action) => {},
+    searchListenerConnect: (state, action) => {},
     setName: (state, action) => {
       state.name = action.payload;
     },

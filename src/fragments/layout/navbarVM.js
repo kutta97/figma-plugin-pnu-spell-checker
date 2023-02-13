@@ -21,5 +21,20 @@ export const useNavbarVM = () => {
     return pageType !== PAGE_TYPE.HOME;
   }, [pageType]);
 
-  return { pageType, pageTitle, isVisibleBackButton, prev };
+  const isVisibleLeftButton = useMemo(() => {
+    return pageType !== PAGE_TYPE.COMPLETE;
+  }, [pageType]);
+
+  const isVisibleRightButton = useMemo(() => {
+    return !isVisibleBackButton;
+  }, [isVisibleBackButton]);
+
+  return {
+    pageType,
+    pageTitle,
+    isVisibleBackButton,
+    isVisibleLeftButton,
+    isVisibleRightButton,
+    prev,
+  };
 };
