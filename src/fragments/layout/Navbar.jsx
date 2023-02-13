@@ -9,8 +9,13 @@ import { Font16W700 } from '@assets/styles/fonts';
 import { useNavbarVM } from './navbarVM';
 
 export function Navbar() {
-  const { pageTitle, isVisibleBackButton, isVisibleLeftButton, prev } =
-    useNavbarVM();
+  const {
+    pageTitle,
+    isVisibleBackButton,
+    isVisibleLeftButton,
+    isVisibleRightButton,
+    prev,
+  } = useNavbarVM();
   return (
     <NavbarStyled>
       {isVisibleLeftButton && (
@@ -24,7 +29,7 @@ export function Navbar() {
       )}
       <h2>{pageTitle}</h2>
       <div className="right-icon">
-        {!isVisibleBackButton && <Filter width={24} height={24} />}
+        {!isVisibleRightButton && <Filter width={24} height={24} />}
       </div>
     </NavbarStyled>
   );
