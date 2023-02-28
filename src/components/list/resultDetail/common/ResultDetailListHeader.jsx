@@ -8,7 +8,7 @@ import FrameIcon from '@assets/icons/list/ic_frame_active.svg';
 import TextIcon from '@assets/icons/list/ic_text_active.svg';
 import { Font14W600 } from '@assets/styles/fonts';
 
-export const ListHeader = (props) => {
+export const ResultDetailListHeader = (props) => {
   const { type, title, isOpen, onToggle, onFocus } = props;
 
   const handleToggle = () => onToggle();

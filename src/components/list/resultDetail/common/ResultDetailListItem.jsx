@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { Font12W400 } from '@assets/styles/fonts';
 
-export const ListItem = ({ children }) => {
+export const ResultDetailListItem = ({ children }) => {
   return (
     <ListItemStyled>
       <div className="scroll-box">{children}</div>

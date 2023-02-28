@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import TextIcon from '@assets/icons/list/ic_text_inactive.svg';
 import { Font13W500 } from '@assets/styles/fonts';
 
-import { ListItem } from '../ListItem';
+import { ResultDetailListItem } from '../common/ResultDetailListItem';
 
 export const FrameItem = ({ data }) => {
   return (
@@ -18,7 +18,7 @@ export const FrameItem = ({ data }) => {
         </span>
       </FrameItemHeader>
       <FrameItemContent>
-        <ListItem>{data.content}</ListItem>
+        <ResultDetailListItem>{data.content}</ResultDetailListItem>
       </FrameItemContent>
     </FrameItemStyled>
   );
@@ -52,4 +52,5 @@ const FrameItemHeader = styled.div`
     }
   }
 `;
+
 const FrameItemContent = styled.div``;
