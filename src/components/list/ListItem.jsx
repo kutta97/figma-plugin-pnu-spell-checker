@@ -12,11 +12,11 @@ export const ListItem = ({ children }) => {
 };
 
 const ListItemStyled = styled.div`
-  width: 100%;
   display: flex;
   justify-content: start;
   align-items: center;
   padding: 12px;
+  margin: 0 16px;
 
   background: ${({ theme }) => theme.colors.gray3};
   border-radius: 4px;
