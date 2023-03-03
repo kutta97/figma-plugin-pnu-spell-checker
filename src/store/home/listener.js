@@ -1,7 +1,7 @@
 import { PAGE_TYPE } from '@consts/index';
 
+import { asyncMessage } from '@utils/messages';
 import request from '@utils/request';
-import { sleep } from '@utils/timer';
 
 import { nextPage } from '@store/root';
 
@@ -14,10 +14,13 @@ const searchListener = async (action, listenerApi) => {
 
   try {
     // TODO Change request.promise to request.fetch and use the Search API
-    await request.promise(() => sleep(3000));
+    window.parent.postMessage({ pluginMessage: { query: 'search' } }, '*');
+    const data = await request.promise(() => asyncMessage('search'));
+    console.log('data', data);
     dispatch(nextPage({ page: PAGE_TYPE.RESULT, isNotRecord: true }));
   } catch (e) {
     /* empty */
+    console.error(e);
   }
 };
 

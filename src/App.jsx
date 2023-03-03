@@ -23,16 +23,8 @@ function App() {
   const inputRef = React.useRef(null);
   const { pageType } = useSelector(rootSelector);
 
-  const onCreate = () => {
-    const count = Number(inputRef.current?.value || 0);
-    window.parent.postMessage(
-      { pluginMessage: { type: 'create-rectangles', count } },
-      '*'
-    );
-  };
-
-  const onCancel = () => {
-    window.parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
+  const onClose = () => {
+    window.parent.postMessage({ pluginMessage: { type: 'exit' } }, '*');
   };
 
   useEffect(() => {
