@@ -8,7 +8,7 @@ export const CheckboxText = (props) => {
 
   return (
     <CheckboxStyled {...props}>
-      <Checkbox onCheck={onCheck} />
+      <Checkbox className="checkbox" onCheck={onCheck} />
       {children}
     </CheckboxStyled>
   );
@@ -17,12 +17,8 @@ export const CheckboxText = (props) => {
 const CheckboxStyled = styled.div`
   display: flex;
   align-items: center;
-  font-size: 13px;
-  line-height: 16px;
-  font-weight: 400;
-  color: ${({ theme }) => theme.colors.gray90};
 
-  input {
+  .checkbox {
     margin-right: 4px;
   }
 `;
