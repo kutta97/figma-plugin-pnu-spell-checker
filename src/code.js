@@ -15,10 +15,9 @@ function findText(node) {
 
 function searchText(_query) {
   const query = _query.toLowerCase();
-  const root = figma.currentPage;
-  const frames = root.children;
+  const root = figma.currentPage.selection;
 
-  const items = frames.map((frame) => ({
+  const items = root.map((frame) => ({
     id: frame.id,
     name: frame.name,
     type: frame.type,
