@@ -1,7 +1,10 @@
 function findText(node) {
   const nodes = [];
   if (node.type === 'TEXT') {
-    nodes.push(node.characters);
+    nodes.push({
+      id: node.id,
+      text: node.characters,
+    });
     return nodes;
   }
   if (node.children) {
@@ -14,16 +17,13 @@ function searchText(_query) {
   const query = _query.toLowerCase();
   const root = figma.currentPage;
   const frames = root.children;
-  const items = [];
 
-  for (let i = 0; i < frames.length; i += 1) {
-    items.push({
-      id: frames[i].id,
-      name: frames[i].name,
-      type: frames[i].type,
-      text: findText(frames[i], []),
-    });
-  }
+  const items = frames.map((frame) => ({
+    id: frame.id,
+    name: frame.name,
+    type: frame.type,
+    text: findText(frame, []),
+  }));
 
   const result = items.filter((item) => item.text.length > 0);
   figma.ui.postMessage({ query, result, done: true });
