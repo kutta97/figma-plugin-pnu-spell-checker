@@ -13,8 +13,7 @@ function findText(node) {
   return nodes.flat();
 }
 
-function searchText(_query) {
-  const query = _query.toLowerCase();
+function searchText(query) {
   const root = figma.currentPage.selection;
 
   const items = root.map((frame) => ({
