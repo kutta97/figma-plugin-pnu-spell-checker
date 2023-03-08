@@ -15,8 +15,8 @@ const request = () => {
           reject(new Error('aborted'));
         }
 
-        callback().then(() => {
-          resolve();
+        callback().then((data) => {
+          resolve(data);
         });
 
         signal.addEventListener('abort', () => {
