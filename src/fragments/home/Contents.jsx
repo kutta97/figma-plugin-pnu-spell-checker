@@ -6,9 +6,7 @@ import { Label } from '@components/text/label';
 export const HomeContents = () => {
   return (
     <HomeContentsStyled>
-      <p>
-        <span>작업 영역에서 검사하고자 하는 텍스트가 포함된</span>
-      </p>
+      <p>작업 영역에서 검사하고자 하는 텍스트가 포함된</p>
       <p>
         <Label className="label" type="TEXT">
           Text Layer
