@@ -33,7 +33,7 @@ export function Navbar() {
 
   useEffect(() => {
     if (filterRef) {
-      const y = filterRef.current.offsetTop + 24;
+      const y = filterRef.current.offsetTop + 26;
       setPosition({
         y,
       });
