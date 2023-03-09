@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 import { Button } from '@components/buttons/Button';
 
-import { useHomeVM } from '@views/home/homeVM';
+import { HomeContents } from '@fragments/home/Contents';
+import { FilteredItem } from '@fragments/home/FilteredItem';
 
-import { HomeContents } from '../../fragments/home/Contents';
-import { FilteredItem } from '../../fragments/home/FilteredItem';
+import { useHomeVM } from '@views/home/homeVM';
 
 export const Home = () => {
   const { filtered, search, searchDisabled } = useHomeVM();
