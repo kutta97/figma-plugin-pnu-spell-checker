@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import CheckIcon from '@assets/icons/check/ic_check.svg';
+import { Font14W500 } from '@assets/styles/fonts';
 
 export const FilteredItem = (props) => {
   const { filteredItems } = props;
@@ -42,8 +43,7 @@ const FilteredItemStyled = styled.div`
   }
 
   .filteredItem {
-    font-weight: 500;
-    font-size: 14px;
+    ${Font14W500};
     line-height: 17px;
     display: flex;
     align-items: center;

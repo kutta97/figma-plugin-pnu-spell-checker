@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { Button } from '@components/buttons/Button';
 import { CheckboxText } from '@components/checkbox/CheckboxText';
 
+import { Font13W400 } from '@assets/styles/fonts';
+
 export const FilterOverlay = (props) => {
   return (
     <FilterOverlayStyled props={props}>
@@ -33,9 +35,8 @@ const FilterOverlayStyled = styled.div`
     margin-bottom: 10px;
 
     span {
-      font-size: 13px;
+      ${Font13W400};
       line-height: 16px;
-      font-weight: 400;
       color: ${({ theme }) => theme.colors.gray90};
       padding-top: 2px;
     }

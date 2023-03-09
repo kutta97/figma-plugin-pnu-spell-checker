@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import FrameIcon from '@assets/icons/text/ic_frame.svg';
 import TextIcon from '@assets/icons/text/ic_text.svg';
+import { Font15W500 } from '@assets/styles/fonts';
 
 export const Label = (props) => {
   const { type, children } = props;
@@ -32,8 +33,7 @@ const LabelStyled = styled.label`
   padding: 2px 6px;
   background: ${({ theme }) => theme.colors.gray5};
   color: ${({ theme }) => theme.colors.violet};
-  font-weight: 500;
-  font-size: 15px;
+  ${Font15W500};
   line-height: 18px;
 
   .icon {
