@@ -44,7 +44,7 @@ const FilterOverlayStyled = styled.div`
 
   .applyButton {
     width: 110px;
-    font-size: 13px;
+    ${Font13W400};
     line-height: 16px;
     padding: 6px 12px;
     margin-top: 6px;
