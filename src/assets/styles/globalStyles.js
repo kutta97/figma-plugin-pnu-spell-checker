@@ -31,6 +31,9 @@ const GlobalStyle = createGlobalStyle`
   ol, ul, li {
     list-style: none;
   }
+  input {
+    margin: 0;
+  }
 `;
 
 export default GlobalStyle;

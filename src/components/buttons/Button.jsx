@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import { Font16W700 } from '@assets/styles/fonts';
 
-export function Button({ onClick, children }) {
+export function Button({ onClick, children, ...props }) {
   return (
-    <ButtonStyled type="button" onClick={onClick}>
+    <ButtonStyled type="button" onClick={onClick} {...props}>
       {children}
     </ButtonStyled>
   );
