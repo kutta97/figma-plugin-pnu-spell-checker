@@ -1,48 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import CheckedIcon from '@assets/icons/check/ic_checkbox_checked.svg';
+import UncheckedIcon from '@assets/icons/check/ic_checkbox_unchecked.svg';
+
 export const Checkbox = (props) => {
-  const { onCheck } = props;
+  const { checked, onCheck } = props;
+
+  const [isChecked, setIsChecked] = useState(checked ?? false);
+
+  const handleChange = (e) => {
+    setIsChecked(e.target.checked);
+    onCheck?.(e.target.checked);
+  };
 
   return (
     <CheckboxStyled {...props}>
-      <input type="checkbox" onClick={onCheck} />
-      <span className="checkmark" />
+      <CheckboxInput
+        type="checkbox"
+        checked={isChecked}
+        onChange={handleChange}
+      />
+      {isChecked ? (
+        <CheckedIcon width={20} height={20} />
+      ) : (
+        <UncheckedIcon width={20} height={20} />
+      )}
     </CheckboxStyled>
   );
 };
 
 const CheckboxStyled = styled.label`
+  position: relative;
   display: flex;
   align-items: center;
-  cursor: pointer;
+`;
 
-  .checkmark {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border: 1px solid #aaa;
-    border-radius: 3px;
-  }
-
-  input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
-  input[type='checkbox']:checked + .checkmark {
-    background: ${({ theme }) => theme.colors.gray90};
-  }
-
-  input[type='checkbox']:checked + .checkmark:after {
-    content: '';
-    display: block;
-    width: 3px;
-    height: 6px;
-    border: solid ${({ theme }) => theme.colors.gray15};
-    border-width: 0 1px 1px 0;
-    transform: rotate(45deg);
-    margin: 2px 0 0 5px;
-  }
+const CheckboxInput = styled.input`
+  position: absolute;
+  appearance: none;
+  width: 20px;
+  height: 20px;
 `;

@@ -30,6 +30,7 @@ const FilterOverlayStyled = styled.div`
   background: ${({ theme }) => theme.colors.white};
   box-shadow: 0 4px 10px 0 #0000001a;
   border-radius: 4px;
+  z-index: 1;
 
   .checkboxText {
     margin-bottom: 10px;
