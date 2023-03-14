@@ -1,30 +1,36 @@
-function findText(node) {
-  const nodes = [];
-  if (node.type === 'TEXT') {
-    nodes.push({
-      id: node.id,
-      text: node.characters,
-    });
-    return nodes;
-  }
-  if (node.children) {
-    nodes.push(node.children.map((child) => findText(child)).flat());
-  }
-  return nodes.flat();
+function findTexts(nodes) {
+  const items = [];
+  nodes.forEach((node) => {
+    if (node.type === 'TEXT') {
+      items.push({
+        id: node.id,
+        name: node.name,
+        text: node.characters,
+      });
+    } else if (node.children) {
+      items.push(...findTexts(node.children));
+    }
+  });
+  return items;
 }
 
-function searchText(query) {
-  const root = figma.currentPage.selection;
-
-  const items = root.map((frame) => ({
-    id: frame.id,
-    name: frame.name,
-    type: frame.type,
-    text: findText(frame, []),
-  }));
-
-  const result = items.filter((item) => item.text.length > 0);
-  figma.ui.postMessage({ query, result, done: true });
+function getSelectedTextNodes(nodes) {
+  const items = [];
+  nodes.forEach((node) => {
+    if (node.type === 'FRAME' || node.type === 'TEXT') {
+      const item = {
+        id: node.id,
+        name: node.name,
+        type: node.type,
+      };
+      if (node.type === 'FRAME') item.texts = findTexts(node.children);
+      if (node.type === 'TEXT') item.text = node.characters;
+      items.push(item);
+    } else if (node.children) {
+      items.push(...getSelectedTextNodes(node.children));
+    }
+  });
+  return items;
 }
 
 figma.showUI(__html__, {
@@ -34,10 +40,15 @@ figma.showUI(__html__, {
 });
 
 figma.ui.onmessage = (msg) => {
-  console.log('msg', msg);
-  if (msg.query) {
-    searchText(msg.query);
-  } else if (msg.quit) {
-    figma.closePlugin();
-  }
+  if (msg.quit) figma.closePlugin();
 };
+
+figma.on('selectionchange', () => {
+  const selectedNodes = figma.currentPage.selection;
+  const selectedTextNodes = getSelectedTextNodes(selectedNodes);
+  figma.ui.postMessage({
+    query: 'selectionchange',
+    selectedTextNodes,
+    done: true,
+  });
+});
