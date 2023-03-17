@@ -14,7 +14,7 @@ function findTexts(nodes) {
   return items;
 }
 
-function getSelectedTextNodes(nodes) {
+function getSelectedNodesWithText(nodes) {
   const items = [];
   nodes.forEach((node) => {
     if (node.type === 'FRAME' || node.type === 'TEXT') {
@@ -27,7 +27,7 @@ function getSelectedTextNodes(nodes) {
       if (node.type === 'TEXT') item.text = node.characters;
       items.push(item);
     } else if (node.children) {
-      items.push(...getSelectedTextNodes(node.children));
+      items.push(...getSelectedNodesWithText(node.children));
     }
   });
   return items;
@@ -45,10 +45,9 @@ figma.ui.onmessage = (msg) => {
 
 figma.on('selectionchange', () => {
   const selectedNodes = figma.currentPage.selection;
-  const selectedTextNodes = getSelectedTextNodes(selectedNodes);
+  const selectedNodesWithText = getSelectedNodesWithText(selectedNodes);
   figma.ui.postMessage({
     query: 'selectionchange',
-    selectedTextNodes,
-    done: true,
+    selectedNodesWithText,
   });
 });
