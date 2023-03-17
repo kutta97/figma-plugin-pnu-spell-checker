@@ -12,7 +12,7 @@ export const useHomeVM = () => {
   const filtered = useAppSelector(homeFilterSelector);
   const totalSelectedNodeCount = useAppSelector(totalSelectedNodeCountSelector);
 
-  const getMessage = async (e) => {
+  const getSelectedNodes = async (e) => {
     try {
       const data = await fromMessage(e);
       if (data.pluginMessage.query !== 'selectionchange') return;
@@ -23,9 +23,9 @@ export const useHomeVM = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('message', getMessage);
+    window.addEventListener('message', getSelectedNodes);
     return () => {
-      window.removeEventListener('message', getMessage);
+      window.removeEventListener('message', getSelectedNodes);
     };
   });
 
