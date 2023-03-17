@@ -13,9 +13,13 @@ export const useHomeVM = () => {
   const totalSelectedNodeCount = useAppSelector(totalSelectedNodeCountSelector);
 
   const getMessage = async (e) => {
-    const data = await fromMessage(e);
-    if (data.pluginMessage.query !== 'selectionchange') return;
-    dispatch(setSelectedNodes(data.pluginMessage.selectedNodesWithText));
+    try {
+      const data = await fromMessage(e);
+      if (data.pluginMessage.query !== 'selectionchange') return;
+      dispatch(setSelectedNodes(data.pluginMessage.selectedNodesWithText));
+    } catch (error) {
+      console.error(e);
+    }
   };
 
   useEffect(() => {
