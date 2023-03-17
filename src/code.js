@@ -23,8 +23,18 @@ function getSelectedNodesWithText(nodes) {
         name: node.name,
         type: node.type,
       };
-      if (node.type === 'FRAME') item.texts = findTexts(node.children);
-      if (node.type === 'TEXT') item.text = node.characters;
+      switch (node.type) {
+        case 'FRAME': {
+          item.texts = findTexts(node.children);
+          break;
+        }
+        case 'TEXT': {
+          item.text = node.characters;
+          break;
+        }
+        default:
+          break;
+      }
       items.push(item);
     } else if (node.children) {
       items.push(...getSelectedNodesWithText(node.children));
