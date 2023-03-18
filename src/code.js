@@ -1,55 +1,59 @@
-function findTexts(nodes) {
-  const createItems = (node) => {
-    if (node.children) {
-      return [...findTexts(node.children)];
-    }
-
-    if (node.type === 'TEXT') {
-      return [
-        {
-          id: node.id,
-          name: node.name,
-          text: node.characters,
-        },
-      ];
-    }
-
-    return [];
+const createItem = (node) => {
+  const { id, name, type } = node;
+  const value = node.characters;
+  // eslint-disable-next-line no-use-before-define
+  const children = findTexts(node.children) || null;
+  return {
+    id,
+    name,
+    type,
+    value,
+    children,
   };
+};
 
-  const items = nodes.reduce((acc, cur) => {
-    return [...acc, ...createItems(cur)];
-  }, []);
+const createItems = (node) => {
+  if (node.type === 'TEXT') {
+    return [createItem(node)];
+  }
+  if (node.children) {
+    // eslint-disable-next-line no-use-before-define
+    return [...findTexts(node.children)];
+  }
+
+  return [];
+};
+
+function findTexts(nodes) {
+  const items = !nodes
+    ? []
+    : nodes.reduce((acc, cur) => {
+        return [...acc, ...createItems(cur)];
+      }, []);
 
   return items;
 }
 
+const createNode = (node) => {
+  if (node.type === 'FRAME') {
+    return [createItem(node)];
+  }
+  if (node.type === 'TEXT') {
+    return [createItem(node)];
+  }
+  if (node.children) {
+    // eslint-disable-next-line no-use-before-define
+    return [...getSelectedNodesWithText(node.children)];
+  }
+
+  return [];
+};
+
 function getSelectedNodesWithText(nodes) {
-  const items = [];
-  nodes.forEach((node) => {
-    if (node.type === 'FRAME' || node.type === 'TEXT') {
-      const item = {
-        id: node.id,
-        name: node.name,
-        type: node.type,
-      };
-      switch (node.type) {
-        case 'FRAME': {
-          item.texts = findTexts(node.children);
-          break;
-        }
-        case 'TEXT': {
-          item.text = node.characters;
-          break;
-        }
-        default:
-          break;
-      }
-      items.push(item);
-    } else if (node.children) {
-      items.push(...getSelectedNodesWithText(node.children));
-    }
-  });
+  const items = nodes.reduce((acc, cur) => {
+    return [...acc, ...createNode(cur)];
+  }, []);
+
   return items;
 }
 
