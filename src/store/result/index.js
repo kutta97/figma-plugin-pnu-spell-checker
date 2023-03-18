@@ -1,5 +1,5 @@
-import * as selector from './selector';
-import { resultSlice } from './slice';
+import * as selector from '@store/result/selector';
+import { resultSlice } from '@store/result/slice';
 
 export const { convertListenerConnect } = resultSlice.actions;
 export const { resultSelector } = selector;
