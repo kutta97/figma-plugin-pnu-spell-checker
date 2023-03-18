@@ -1,30 +1,60 @@
-function findText(node) {
-  const nodes = [];
+const createItem = (node) => {
+  const { id, name, type } = node;
+  const value = node.characters;
+  // eslint-disable-next-line no-use-before-define
+  const children = findTexts(node.children) || null;
+  return {
+    id,
+    name,
+    type,
+    value,
+    children,
+  };
+};
+
+const createItems = (node) => {
   if (node.type === 'TEXT') {
-    nodes.push({
-      id: node.id,
-      text: node.characters,
-    });
-    return nodes;
+    return [createItem(node)];
   }
   if (node.children) {
-    nodes.push(node.children.map((child) => findText(child)).flat());
+    // eslint-disable-next-line no-use-before-define
+    return [...findTexts(node.children)];
   }
-  return nodes.flat();
+
+  return [];
+};
+
+function findTexts(nodes) {
+  const items = nodes
+    ? nodes.reduce((acc, cur) => {
+        return [...acc, ...createItems(cur)];
+      }, [])
+    : [];
+
+  return items;
 }
 
-function searchText(query) {
-  const root = figma.currentPage.selection;
+const createNode = (node) => {
+  if (node.type === 'FRAME') {
+    return [createItem(node)];
+  }
+  if (node.type === 'TEXT') {
+    return [createItem(node)];
+  }
+  if (node.children) {
+    // eslint-disable-next-line no-use-before-define
+    return [...getSelectedNodesWithText(node.children)];
+  }
 
-  const items = root.map((frame) => ({
-    id: frame.id,
-    name: frame.name,
-    type: frame.type,
-    text: findText(frame, []),
-  }));
+  return [];
+};
 
-  const result = items.filter((item) => item.text.length > 0);
-  figma.ui.postMessage({ query, result, done: true });
+function getSelectedNodesWithText(nodes) {
+  const items = nodes.reduce((acc, cur) => {
+    return [...acc, ...createNode(cur)];
+  }, []);
+
+  return items;
 }
 
 figma.showUI(__html__, {
@@ -34,10 +64,14 @@ figma.showUI(__html__, {
 });
 
 figma.ui.onmessage = (msg) => {
-  console.log('msg', msg);
-  if (msg.query) {
-    searchText(msg.query);
-  } else if (msg.quit) {
-    figma.closePlugin();
-  }
+  if (msg.quit) figma.closePlugin();
 };
+
+figma.on('selectionchange', () => {
+  const selectedNodes = figma.currentPage.selection;
+  const selectedNodesWithText = getSelectedNodesWithText(selectedNodes);
+  figma.ui.postMessage({
+    query: 'selectionchange',
+    selectedNodesWithText,
+  });
+});

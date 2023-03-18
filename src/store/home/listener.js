@@ -3,9 +3,8 @@ import { PAGE_TYPE } from '@consts/index';
 import { asyncMessage } from '@utils/messages';
 import request from '@utils/request';
 
+import { searchListenerConnect } from '@store/home/index';
 import { nextPage } from '@store/root';
-
-import { searchListenerConnect } from './index';
 
 const searchListener = async (action, listenerApi) => {
   const { dispatch } = listenerApi;

@@ -9,12 +9,12 @@ import { FilteredItem } from '@fragments/home/FilteredItem';
 import { useHomeVM } from '@views/home/homeVM';
 
 export const Home = () => {
-  const { filtered, search, searchDisabled } = useHomeVM();
+  const { filtered, isCheckAvailable, check } = useHomeVM();
   return (
     <HomeStyled>
-      <HomeContents />
+      <HomeContents isCheckAvailable={isCheckAvailable} />
       {filtered.length > 0 && <FilteredItem filteredItems={filtered} />}
-      <Button className="search" onClick={search} disabled={searchDisabled}>
+      <Button className="check" onClick={check} disabled={!isCheckAvailable}>
         검사하기
       </Button>
     </HomeStyled>
@@ -29,7 +29,7 @@ const HomeStyled = styled.main`
   height: 100%;
   padding: 12px 16px;
 
-  .search {
+  .check {
     &:disabled {
       background: ${({ theme }) => theme.colors.gray15};
     }
