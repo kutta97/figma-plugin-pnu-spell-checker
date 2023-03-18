@@ -25,11 +25,11 @@ const createItems = (node) => {
 };
 
 function findTexts(nodes) {
-  const items = !nodes
-    ? []
-    : nodes.reduce((acc, cur) => {
+  const items = nodes
+    ? nodes.reduce((acc, cur) => {
         return [...acc, ...createItems(cur)];
-      }, []);
+      }, [])
+    : [];
 
   return items;
 }
