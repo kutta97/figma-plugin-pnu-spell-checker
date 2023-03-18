@@ -1,16 +1,26 @@
 function findTexts(nodes) {
-  const items = [];
-  nodes.forEach((node) => {
-    if (node.type === 'TEXT') {
-      items.push({
-        id: node.id,
-        name: node.name,
-        text: node.characters,
-      });
-    } else if (node.children) {
-      items.push(...findTexts(node.children));
+  const createItems = (node) => {
+    if (node.children) {
+      return [...findTexts(node.children)];
     }
-  });
+
+    if (node.type === 'TEXT') {
+      return [
+        {
+          id: node.id,
+          name: node.name,
+          text: node.characters,
+        },
+      ];
+    }
+
+    return [];
+  };
+
+  const items = nodes.reduce((acc, cur) => {
+    return [...acc, ...createItems(cur)];
+  }, []);
+
   return items;
 }
 
