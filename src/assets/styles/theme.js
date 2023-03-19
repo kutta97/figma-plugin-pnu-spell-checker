@@ -39,6 +39,10 @@ const fontSizes = {
     font-size: 12px;
     line-height: 14px;
   `,
+  s40: `
+    font-size: 40px;
+    line-height: 48px;
+  `,
 };
 
 const theme = {
