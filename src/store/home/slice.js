@@ -18,7 +18,7 @@ export const homeSlice = createSlice({
   name: 'home',
   initialState,
   reducers: {
-    searchListenerConnect: (state, action) => {},
+    checkListenerConnect: (state, action) => {},
     setName: (state, action) => {
       state.name = action.payload;
     },
