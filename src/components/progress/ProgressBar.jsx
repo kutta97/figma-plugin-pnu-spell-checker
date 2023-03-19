@@ -17,18 +17,17 @@ const ProgressBarStyled = styled.div`
   overflow: hidden;
 
   .progress {
-    width: 50%;
     height: 100%;
     position: absolute;
     background: ${({ theme }) => theme.colors.gray90};
-    animation: progress 1.5s infinite;
+    animation: progress 2s linear infinite;
   }
   @keyframes progress {
-    from {
-      left: -50%;
+    0% {
+      width: 0%;
     }
-    to {
-      left: 100%;
+    100% {
+      width: 100%;
     }
   }
 `;
