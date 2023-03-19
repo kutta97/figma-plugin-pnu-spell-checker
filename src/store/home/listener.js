@@ -13,7 +13,6 @@ const checkListener = async (action, listenerApi) => {
 
   try {
     // TODO Change request.promise to request.fetch and use the Search API
-    window.parent.postMessage({ pluginMessage: { query: 'check' } }, '*');
     const data = await request.promise(() => asyncMessage('check'));
     console.log('data', data);
     dispatch(nextPage({ page: PAGE_TYPE.RESULT, isNotRecord: true }));
