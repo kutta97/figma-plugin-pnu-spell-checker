@@ -15,8 +15,8 @@ export const ResultList = (props) => {
         <ResultListItem
           key={item.id}
           data={item.data}
-          onCheck={() => handleCheck(item.id)}
-          onClickMore={() => handleClickMore(item.id)}
+          onCheck={handleCheck(item.id)}
+          onClickMore={handleClickMore(item.id)}
         />
       ))}
     </ResultListStyled>

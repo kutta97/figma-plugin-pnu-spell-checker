@@ -1,7 +1,7 @@
 export const useResultListVM = () => {
-  const handleCheck = (id) => {};
+  const handleCheck = (id) => () => {};
 
-  const handleClickMore = (id) => {};
+  const handleClickMore = (id) => () => {};
 
   return { handleCheck, handleClickMore };
 };
