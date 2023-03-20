@@ -7,6 +7,11 @@ import { Font13W400, Font13W700 } from '@assets/styles/fonts';
 import { ResultItemContainer } from './ResultItemContainer';
 
 export const ResultListItem = (props) => {
+  /**
+   * data: ResultData
+   * @param {string} beforeText 기존 텍스트
+   * @param {string} afterText 교정된 텍스트
+   */
   const { data } = props;
 
   return (
