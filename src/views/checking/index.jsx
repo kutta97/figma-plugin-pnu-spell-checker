@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import { CheckingContents } from '@fragments/checking/Contents';
 
-export const Checking = (props) => {
+export const Checking = () => {
   return (
-    <CheckingStyled {...props}>
+    <CheckingStyled>
       <CheckingContents />
     </CheckingStyled>
   );

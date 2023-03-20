@@ -2,10 +2,10 @@ import React from 'react';
 
 import { EmojiProgressBarText } from '@components/text/EmojiProgressBarText';
 
-export const CheckingContents = () => {
+export const ConvertingContents = () => {
   return (
-    <EmojiProgressBarText emoji="👀">
-      <p>고칠 곳이 있는지 열심히 찾고 있어요.</p>
+    <EmojiProgressBarText emoji="🪄">
+      <p>텍스트 변환 중이에요</p>
     </EmojiProgressBarText>
   );
 };
