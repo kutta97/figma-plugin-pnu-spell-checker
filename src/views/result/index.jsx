@@ -19,7 +19,9 @@ export const Result = () => {
         <CheckboxText>
           <p>전체 선택</p>
         </CheckboxText>
-        <Button onClick={converting}>텍스트 변환하기</Button>
+        <Button className="convert-button" onClick={converting}>
+          텍스트 변환하기
+        </Button>
       </div>
     </ResultStyled>
   );
@@ -34,13 +36,15 @@ const ResultStyled = styled.main`
   .button-container {
     display: flex;
     width: 100%;
-    height: 77px;
     gap: 16px;
     padding: 12px 16px;
     border-top: 1px solid ${({ theme }) => theme.colors.gray5};
     p {
       ${Font14W600}
       white-space: nowrap;
+    }
+    .convert-button {
+      height: 52px;
     }
   }
 `;

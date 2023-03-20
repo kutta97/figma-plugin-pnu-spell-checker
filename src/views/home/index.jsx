@@ -17,7 +17,11 @@ export const Home = () => {
         {filtered.length > 0 && <FilteredItem filteredItems={filtered} />}
       </div>
       <div className="button-container">
-        <Button className="check" onClick={check} disabled={!isCheckAvailable}>
+        <Button
+          className="check-button"
+          onClick={check}
+          disabled={!isCheckAvailable}
+        >
           검사하기
         </Button>
       </div>
@@ -38,9 +42,9 @@ const HomeStyled = styled.main`
 
   .button-container {
     width: 100%;
-    height: 76px;
     padding: 12px 16px;
-    .check {
+    .check-button {
+      height: 52px;
       &:disabled {
         background: ${({ theme }) => theme.colors.gray15};
       }
