@@ -8,9 +8,10 @@ import { ResultItemContainer } from './ResultItemContainer';
 
 export const ResultListItem = (props) => {
   /**
-   * data: ResultData
-   * @param {string} beforeText 기존 텍스트
-   * @param {string} afterText 교정된 텍스트
+   * data: {
+   *  beforeText: string,
+   *  afterText: string
+   * }
    */
   const { data } = props;
 
