@@ -1,15 +1,19 @@
 import { PAGE_TYPE } from '@consts/index';
 
-import { useAppDispatch } from '@store/hook';
-import { convertListenerConnect } from '@store/result';
+import { useAppDispatch, useAppSelector } from '@store/hook';
+import { convertListenerConnect, resultListSelector } from '@store/result';
 
 import { usePageRouter } from '@hooks/usePageRouter';
 
 export const useResultVM = () => {
   const dispatch = useAppDispatch();
-  const { next } = usePageRouter();
+  const { next, clear } = usePageRouter();
 
-  const converting = () => {
+  const resultList = useAppSelector(resultListSelector);
+
+  const checkAll = () => {};
+
+  const convert = () => {
     dispatch(convertListenerConnect());
   };
 
@@ -17,5 +21,9 @@ export const useResultVM = () => {
     next(PAGE_TYPE.DETAIL);
   };
 
-  return { converting, goDetail };
+  const goHome = () => {
+    clear();
+  };
+
+  return { resultList, checkAll, convert, goDetail, goHome };
 };
