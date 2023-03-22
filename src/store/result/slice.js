@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   name: 'initial name home',
+  resultList: [],
 };
 
 export const resultSlice = createSlice({
@@ -9,5 +10,8 @@ export const resultSlice = createSlice({
   initialState,
   reducers: {
     convertListenerConnect: (state, action) => {},
+    setResultList: (state, action) => {
+      state.resultList = action.payload;
+    },
   },
 });
