@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { useAppSelector } from '@store/hook';
+import { resultListSelector } from '@store/result';
+
 import { Font18W700 } from '@assets/styles/fonts';
 
 import { ResultList } from '@fragments/result/ResultList';
 import { ResultInfo } from '@fragments/result/ResultsInfo';
 
-export const Results = (props) => {
-  const { resultList } = props;
+export const Results = () => {
+  const resultList = useAppSelector(resultListSelector);
 
   const handleClickResultDetail = () => {};
 

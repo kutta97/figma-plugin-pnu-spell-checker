@@ -4,11 +4,7 @@ import { EmptyResult } from '@fragments/result/Empty';
 import { Results } from '@fragments/result/Results';
 
 export const ResultContents = (props) => {
-  const { resultList } = props;
+  const { isResultEmpty } = props;
 
-  return resultList.length ? (
-    <Results resultList={resultList} />
-  ) : (
-    <EmptyResult />
-  );
+  return isResultEmpty ? <EmptyResult /> : <Results />;
 };

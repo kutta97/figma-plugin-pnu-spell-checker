@@ -1,7 +1,9 @@
+import { useMemo } from 'react';
+
 import { PAGE_TYPE } from '@consts/index';
 
 import { useAppDispatch, useAppSelector } from '@store/hook';
-import { convertListenerConnect, resultListSelector } from '@store/result';
+import { convertListenerConnect, resultCountSelector } from '@store/result';
 
 import { usePageRouter } from '@hooks/usePageRouter';
 
@@ -9,7 +11,11 @@ export const useResultVM = () => {
   const dispatch = useAppDispatch();
   const { next, clear } = usePageRouter();
 
-  const resultList = useAppSelector(resultListSelector);
+  const resultCount = useAppSelector(resultCountSelector);
+
+  const isResultEmpty = useMemo(() => {
+    return resultCount === 0;
+  }, [resultCount]);
 
   const checkAll = () => {};
 
@@ -25,5 +31,5 @@ export const useResultVM = () => {
     clear();
   };
 
-  return { resultList, checkAll, convert, goDetail, goHome };
+  return { isResultEmpty, checkAll, convert, goDetail, goHome };
 };

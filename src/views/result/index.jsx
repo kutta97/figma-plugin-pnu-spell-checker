@@ -11,12 +11,16 @@ import { ResultContents } from '@fragments/result/Contents';
 import { useResultVM } from '@views/result/resultVM';
 
 export const Result = () => {
-  const { resultList, checkAll, convert, goDetail, goHome } = useResultVM();
+  const { isResultEmpty, checkAll, convert, goDetail, goHome } = useResultVM();
   return (
     <ResultStyled>
-      <ResultContents resultList={resultList} />
+      <ResultContents isResultEmpty={isResultEmpty} />
       <div className="button-container">
-        {resultList.length ? (
+        {isResultEmpty ? (
+          <Button className="button" onClick={goHome}>
+            처음으로
+          </Button>
+        ) : (
           <>
             <CheckboxText onCheck={checkAll}>
               <p>전체 선택</p>
@@ -25,10 +29,6 @@ export const Result = () => {
               텍스트 변환하기
             </Button>
           </>
-        ) : (
-          <Button className="button" onClick={goHome}>
-            처음으로
-          </Button>
         )}
       </div>
     </ResultStyled>
