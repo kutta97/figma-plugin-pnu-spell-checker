@@ -7,7 +7,6 @@ import { CheckboxText } from '@components/checkbox/CheckboxText';
 import { Font14W600 } from '@assets/styles/fonts';
 
 import { ResultContents } from '@fragments/result/Contents';
-import { ResultEmpty } from '@fragments/result/Empty';
 
 import { useResultVM } from '@views/result/resultVM';
 
@@ -15,11 +14,7 @@ export const Result = () => {
   const { resultList, checkAll, convert, goDetail, goHome } = useResultVM();
   return (
     <ResultStyled>
-      {resultList.length ? (
-        <ResultContents resultList={resultList} />
-      ) : (
-        <ResultEmpty />
-      )}
+      <ResultContents resultList={resultList} />
       <div className="button-container">
         {resultList.length ? (
           <>

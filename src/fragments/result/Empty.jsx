@@ -5,20 +5,20 @@ import { EmojiText } from '@components/text/EmojiText';
 
 import { Font15W500 } from '@assets/styles/fonts';
 
-export const ResultEmpty = () => {
+export const EmptyResult = () => {
   return (
-    <ResultEmptyStyled>
+    <EmptyResultStyled>
       <EmojiText emoji="👍">
         <p>고칠 곳이 없어요</p>
         <p className="sub-text">
           그래도 완벽한 작업을 위해 한 번 더 검토해 주세요 :)
         </p>
       </EmojiText>
-    </ResultEmptyStyled>
+    </EmptyResultStyled>
   );
 };
 
-const ResultEmptyStyled = styled.section`
+const EmptyResultStyled = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
