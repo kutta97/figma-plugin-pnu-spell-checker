@@ -9,6 +9,20 @@ import { nextPage } from '@store/root';
 const searchListener = async (action, listenerApi) => {
   const { dispatch } = listenerApi;
 
+  const { selectedNodes } = listenerApi.getState().nodeReducer;
+
+  const words = selectedNodes.reduce((acc, cur) => {
+    if (cur.type === 'TEXT') return `${acc + cur.value}\n`;
+    if (cur.type === 'FRAME')
+      return acc + cur.children.map((node) => node.value).join(' ');
+    return acc;
+  }, '');
+
+  console.log('word', words);
+
+  const result = await fetch(`http://localhost:3000/check?word="${words}"`);
+  console.log('result', await result.json());
+
   dispatch(nextPage({ page: PAGE_TYPE.SEARCHING }));
 
   try {
