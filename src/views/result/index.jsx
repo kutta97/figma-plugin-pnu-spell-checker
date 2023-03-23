@@ -11,17 +11,25 @@ import { ResultContents } from '@fragments/result/Contents';
 import { useResultVM } from '@views/result/resultVM';
 
 export const Result = () => {
-  const { converting, goDetail } = useResultVM();
+  const { isResultEmpty, checkAll, convert, goDetail, goHome } = useResultVM();
   return (
     <ResultStyled>
-      <ResultContents />
+      <ResultContents isResultEmpty={isResultEmpty} />
       <div className="button-container">
-        <CheckboxText>
-          <p>전체 선택</p>
-        </CheckboxText>
-        <Button className="convert-button" onClick={converting}>
-          텍스트 변환하기
-        </Button>
+        {isResultEmpty ? (
+          <Button className="button" onClick={goHome}>
+            처음으로
+          </Button>
+        ) : (
+          <>
+            <CheckboxText onCheck={checkAll}>
+              <p>전체 선택</p>
+            </CheckboxText>
+            <Button className="button" onClick={convert}>
+              텍스트 변환하기
+            </Button>
+          </>
+        )}
       </div>
     </ResultStyled>
   );
@@ -43,7 +51,7 @@ const ResultStyled = styled.main`
       ${Font14W600}
       white-space: nowrap;
     }
-    .convert-button {
+    .button {
       height: 52px;
     }
   }
