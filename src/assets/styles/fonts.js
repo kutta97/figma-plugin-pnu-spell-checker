@@ -96,3 +96,11 @@ export const Font12W400 = css`
   font-weight: 400;
   text-align: center;
 `;
+
+/** font-size: 40 */
+export const Font40W500 = css`
+  ${({ theme }) => theme.fontSizes.s40}
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+`;

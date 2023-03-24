@@ -23,7 +23,6 @@ export const FilteredItem = (props) => {
 
 const FilteredItemStyled = styled.div`
   width: 100%;
-  height: 63px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -38,7 +37,7 @@ const FilteredItemStyled = styled.div`
 
   .filterList {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     gap: 8px;
   }
 

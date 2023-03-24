@@ -1,15 +1,25 @@
+import { useMemo } from 'react';
+
 import { PAGE_TYPE } from '@consts/index';
 
-import { useAppDispatch } from '@store/hook';
-import { convertListenerConnect } from '@store/result';
+import { useAppDispatch, useAppSelector } from '@store/hook';
+import { convertListenerConnect, resultCountSelector } from '@store/result';
 
 import { usePageRouter } from '@hooks/usePageRouter';
 
 export const useResultVM = () => {
   const dispatch = useAppDispatch();
-  const { next } = usePageRouter();
+  const { next, clear } = usePageRouter();
 
-  const converting = () => {
+  const resultCount = useAppSelector(resultCountSelector);
+
+  const isResultEmpty = useMemo(() => {
+    return resultCount === 0;
+  }, [resultCount]);
+
+  const checkAll = () => {};
+
+  const convert = () => {
     dispatch(convertListenerConnect());
   };
 
@@ -17,5 +27,9 @@ export const useResultVM = () => {
     next(PAGE_TYPE.DETAIL);
   };
 
-  return { converting, goDetail };
+  const goHome = () => {
+    clear();
+  };
+
+  return { isResultEmpty, checkAll, convert, goDetail, goHome };
 };

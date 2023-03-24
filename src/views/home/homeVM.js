@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react';
 
 import { fromMessage } from '@utils/messages';
 
-import { searchListenerConnect } from '@store/home';
+import { checkListenerConnect } from '@store/home';
 import { homeFilterSelector } from '@store/home/selector';
 import { useAppDispatch, useAppSelector } from '@store/hook';
 import { setSelectedNodes, totalSelectedNodeCountSelector } from '@store/node';
@@ -34,7 +34,7 @@ export const useHomeVM = () => {
   }, [totalSelectedNodeCount]);
 
   const check = () => {
-    dispatch(searchListenerConnect());
+    dispatch(checkListenerConnect());
   };
 
   return {

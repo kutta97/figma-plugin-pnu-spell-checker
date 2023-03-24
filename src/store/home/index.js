@@ -1,6 +1,6 @@
-import * as selector from './selector';
-import { homeSlice } from './slice';
+import * as selector from '@store/home/selector';
+import { homeSlice } from '@store/home/slice';
 
-export const { searchListenerConnect, setName } = homeSlice.actions;
+export const { checkListenerConnect, setName } = homeSlice.actions;
 export const { homeSelector, homeNameSelector } = selector;
 export const homeReducer = homeSlice.reducer;
