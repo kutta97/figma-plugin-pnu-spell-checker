@@ -4,11 +4,12 @@
  * @returns {{getHomeData: (function(): Promise<{transferData: *}>)}}
  * @constructor
  */
-export const HomeUsecase = (data) => {
+export const HomeUsecase = (api) => {
   return {
-    getHomeData: async () => {
-      const value = await data;
-      return { transferData: value };
+    getSpellCheck: async (spell) => {
+      return Promise.resolve({
+        transferData: await (await api(spell)).json(),
+      });
     },
   };
 };

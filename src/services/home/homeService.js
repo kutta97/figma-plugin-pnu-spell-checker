@@ -4,14 +4,11 @@
  * @constructor
  */
 export const HomeService = () => {
-  const domain = '/home'; // TODO connect with base url (for Figma API)
+  const domain = 'http://localhost:8000/spellcheck/'; // TODO connect with base url (for Figma API)
 
   return {
-    getApi: async () => {
-      const data = await (() => domain); // call API
-      return new Promise((resolve) => {
-        resolve(data);
-      });
+    getSpellCheck: async (spell) => {
+      return fetch(`${domain}${spell}`); // call API
     },
   };
 };
