@@ -10,3 +10,14 @@ export const PAGE_TYPE = Object.keys(PAGE_TITLE).reduce((acc, key) => {
   acc[key] = key;
   return acc;
 }, {});
+
+export const FILTER = {
+  SPELL: {
+    id: 'SPELL',
+    text: '맞춤법',
+  },
+  SPACE: {
+    id: 'SPACE',
+    text: '띄어쓰기',
+  },
+};

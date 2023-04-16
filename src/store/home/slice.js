@@ -1,17 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { FILTER } from '@consts/index';
+
 const initialState = {
   name: 'initial name home',
-  filtered: [
-    {
-      id: 1,
-      text: '맞춤법',
-    },
-    {
-      id: 2,
-      text: '띄어쓰기',
-    },
-  ],
+  filtered: [FILTER.SPELL, FILTER.SPACE],
 };
 
 export const homeSlice = createSlice({
@@ -21,6 +14,9 @@ export const homeSlice = createSlice({
     checkListenerConnect: (state, action) => {},
     setName: (state, action) => {
       state.name = action.payload;
+    },
+    setFilter: (state, action) => {
+      state.filtered = action.payload;
     },
   },
 });
