@@ -1,8 +1,5 @@
 import { PAGE_TYPE } from '@consts/index';
 
-import { asyncMessage } from '@utils/messages';
-import request from '@utils/request';
-
 import { checkListenerConnect } from '@store/home/index';
 import { nextPage } from '@store/root';
 
@@ -13,6 +10,8 @@ const checkListener = async (action, listenerApi) => {
 
   const { selectedNodes } = listenerApi.getState().nodeReducer;
 
+  console.log('nodes', selectedNodes);
+
   const words = selectedNodes.reduce((acc, cur) => {
     if (cur.type === 'TEXT') return `${acc + cur.value}\n`;
     if (cur.type === 'FRAME')
@@ -22,14 +21,15 @@ const checkListener = async (action, listenerApi) => {
 
   console.log('word', words);
 
-  const result = await fetch(`http://localhost:3000/check?word="${words}"`);
-  console.log('result', await result.json());
+  // const result = await fetch(`http://localhost:3000/check?word="${words}"`);
 
   try {
     // TODO Change request.promise to request.fetch and use the Search API
-    const data = await request.promise(() => asyncMessage('check'));
-    console.log('data', data);
-    dispatch(nextPage({ page: PAGE_TYPE.RESULT, isNotRecord: true }));
+    // await request.promise(() => asyncMessage('check'));
+    setTimeout(() => {
+      console.log('async time wait 3s');
+      dispatch(nextPage({ page: PAGE_TYPE.RESULT, isNotRecord: true }));
+    }, 3000);
   } catch (e) {
     /* empty */
     console.error(e);
