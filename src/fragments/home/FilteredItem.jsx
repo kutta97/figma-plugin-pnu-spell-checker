@@ -47,7 +47,6 @@ const FilteredItemStyled = styled.div`
     display: flex;
     align-items: center;
     color: ${({ theme }) => theme.colors.gray70};
-    cursor: pointer;
 
     .checkIcon {
       margin-right: 2px;

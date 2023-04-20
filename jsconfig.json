@@ -9,6 +9,7 @@
       "@hooks/*": ["./src/hooks/*"],
       "@services/*": ["./src/services/*"],
       "@store/*": ["./src/store/*"],
+      "@fragments/*": ["./src/fragments/*"],
       "@views/*": ["./src/views/*"],
       "@pureComponents/*": ["./src/pureComponents/*"],
       "@consts/*": ["./src/consts/*"]
