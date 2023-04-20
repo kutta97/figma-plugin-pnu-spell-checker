@@ -25,7 +25,7 @@ const checkListener = async (action, listenerApi) => {
 
   try {
     // TODO Change request.promise to request.fetch and use the Search API
-    const result = await services.homeServices.spellCheck(words);
+    const result = await services.spellCheckService.spellCheck(words);
     console.log('result', result);
 
     // TODO remove set timeout. It's just to check the progress status.

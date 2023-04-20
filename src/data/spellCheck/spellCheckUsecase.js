@@ -1,10 +1,10 @@
 /**
  * usecase is data transfer api to model
- * @param data
  * @returns {{getHomeData: (function(): Promise<{transferData: *}>)}}
  * @constructor
+ * @param api
  */
-export const HomeUsecase = (api) => {
+export const SpellCheckUsecase = (api) => {
   return {
     getSpellCheck: async (spell) => {
       return Promise.resolve({
