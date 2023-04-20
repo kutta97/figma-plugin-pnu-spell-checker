@@ -13,25 +13,19 @@ export const useFilterVM = () => {
   const [filterState, setFilterState] = useState([
     {
       ...FILTER.SPELL,
-      checked: !!filtered.find((it) => it.id === FILTER.SPELL.id),
+      checked: !!filtered.find((filter) => filter.id === FILTER.SPELL.id),
     },
     {
       ...FILTER.SPACE,
-      checked: !!filtered.find((it) => it.id === FILTER.SPACE.id),
+      checked: !!filtered.find((filter) => filter.id === FILTER.SPACE.id),
     },
   ]);
 
   const onFilterCheck = (id) => () => {
-    const beforeFilterState = filterState.map((it) => {
-      if (it.id === id) {
-        return {
-          ...it,
-          checked: !it.checked,
-        };
-      }
-      return it;
-    });
-    setFilterState(beforeFilterState);
+    const afterFilterState = filterState.map((filter) =>
+      filter.id === id ? { ...filter, checked: !filter.checked } : filter
+    );
+    setFilterState(afterFilterState);
   };
 
   const applyFilter = () => {
@@ -40,7 +34,7 @@ export const useFilterVM = () => {
 
   const filterCheckedState = useCallback(
     (id) => {
-      return filterState.find((it) => it.id === id).checked;
+      return filterState.find((filter) => filter.id === id).checked;
     },
     [filterState]
   );
