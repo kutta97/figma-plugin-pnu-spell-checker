@@ -1,5 +1,5 @@
-import home from './home';
+import home from './spellCheck';
 
 export const services = {
-  homeServices: home,
+  spellCheckService: home,
 };

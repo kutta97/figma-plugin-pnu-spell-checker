@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  createRef,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import Back from '@assets/icons/navbar/ic_back.svg';
@@ -14,7 +7,8 @@ import Filter from '@assets/icons/navbar/ic_filter.svg';
 import Info from '@assets/icons/navbar/ic_info.svg';
 import { Font16W700 } from '@assets/styles/fonts';
 
-import { FilterOverlay } from '../home/FilterOverlay';
+import { FilterOverlay } from '@fragments/home/FilterOverlay';
+
 import { useNavbarVM } from './navbarVM';
 
 export function Navbar() {
