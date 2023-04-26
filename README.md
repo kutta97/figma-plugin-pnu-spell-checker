@@ -1,5 +1,7 @@
 # Project Description
-한스펠을 사용한 피그마 맞춤법 검사 플러그인입니다.
+피그마 한글 맞춤법 검사 플러그인입니다.
+피그마 텍스트 노드의 한글 맞춤법을 검사할 수 있는 기능을 제공합니다.
+부산대학교 인공지능연구실과 (주)나라인포테크의 국어 맞춤법/문법 검사기 api를 제공받아 만들었습니다.
 
 ## Architecture
 ![architecture](./.github/readme-assets/architecture.png)

@@ -1,5 +1,5 @@
 {
-  "name": "figma-plugin-hanspell",
+  "name": "figma-plugin-pnu-spell-checker",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
-  "repository": "https://github.com/kutta97/figma-plugin-hanspell.git",
+  "repository": "https://github.com/kutta97/figma-plugin-pnu-spell-checker",
   "author": "kutta97 <yhjin04170@gmail.com>",
   "license": "MIT",
   "devDependencies": {
