@@ -1,38 +1,15 @@
 import * as React from 'react';
-import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import Back from '@assets/icons/navbar/ic_back.svg';
-import Filter from '@assets/icons/navbar/ic_filter.svg';
 import Info from '@assets/icons/navbar/ic_info.svg';
 import { Font16W700 } from '@assets/styles/fonts';
-
-import { FilterOverlay } from '@fragments/home/FilterOverlay';
 
 import { useNavbarVM } from './navbarVM';
 
 export function Navbar() {
-  const {
-    pageTitle,
-    isVisibleBackButton,
-    isVisibleLeftButton,
-    isVisibleRightButton,
-    prev,
-  } = useNavbarVM();
-
-  const filterRef = useRef();
-
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [filterPosition, setPosition] = useState({ y: 0 });
-
-  useEffect(() => {
-    if (filterRef) {
-      const y = filterRef.current.offsetTop + 26;
-      setPosition({
-        y,
-      });
-    }
-  }, [filterRef]);
+  const { pageTitle, isVisibleBackButton, isVisibleLeftButton, prev } =
+    useNavbarVM();
 
   return (
     <NavbarStyled>
@@ -46,16 +23,6 @@ export function Navbar() {
         </div>
       )}
       <h2>{pageTitle}</h2>
-      {isFilterOpen && <FilterOverlay y={filterPosition.y} />}
-      <div className="right-icon" ref={filterRef}>
-        {isVisibleRightButton && (
-          <Filter
-            width={24}
-            height={24}
-            onClick={() => setIsFilterOpen(!isFilterOpen)}
-          />
-        )}
-      </div>
     </NavbarStyled>
   );
 }
@@ -77,11 +44,5 @@ const NavbarStyled = styled.header`
     position: absolute;
     top: 14px;
     left: 16px;
-  }
-
-  .right-icon {
-    position: absolute;
-    top: 14px;
-    right: 16px;
   }
 `;

@@ -4,36 +4,28 @@ import styled from 'styled-components';
 import { Label } from '@components/text/label';
 
 import { useAppSelector } from '@store/hook';
-import { selectedNodeCountsSelector } from '@store/node';
+import { selectedTextNodeValueSelector } from '@store/node';
+
+import { Font13W400 } from '@assets/styles/fonts';
 
 const DefaultHomeContents = () => {
   return (
-    <>
+    <DefaultHomeContentsStyled>
       <p>작업 영역에서 검사하고자 하는 텍스트가 포함된</p>
       <p>
         <Label type="TEXT">Text Layer</Label>
-        <span>혹은</span>
-        <Label type="FRAME">Frame</Label>
-        <span>을</span>
+        <span>를</span>선택해 주세요.
       </p>
-      <p>선택해 주세요.</p>
-    </>
+    </DefaultHomeContentsStyled>
   );
 };
 
 const NodeSelectedHomeContents = () => {
-  const selectedNodeCounts = useAppSelector(selectedNodeCountsSelector);
+  const selectedTextNodeValue = useAppSelector(selectedTextNodeValueSelector);
   return (
-    <>
-      <p className="selected">
-        <Label type="TEXT">Text Layer</Label>
-        <span>{`${selectedNodeCounts.text}개 선택됨`}</span>
-      </p>
-      <p className="selected">
-        <Label type="FRAME">Frame</Label>
-        <span>{`${selectedNodeCounts.frame}개 선택됨`}</span>
-      </p>
-    </>
+    <HomeSelectedTextNodeStyled>
+      <p>{selectedTextNodeValue}</p>
+    </HomeSelectedTextNodeStyled>
   );
 };
 
@@ -42,31 +34,46 @@ export const HomeContents = (props) => {
 
   return (
     <HomeContentsStyled>
-      {isCheckAvailable ? (
-        <NodeSelectedHomeContents />
-      ) : (
-        <DefaultHomeContents />
-      )}
+      <DefaultHomeContents />
+      {isCheckAvailable && <NodeSelectedHomeContents />}
     </HomeContentsStyled>
   );
 };
 
-const HomeContentsStyled = styled.div`
+const HomeContentsStyled = styled.article`
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 24px;
   width: 100%;
   height: 100%;
   align-items: center;
   justify-content: center;
+`;
+
+const DefaultHomeContentsStyled = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  padding: 16px 20px;
 
   p {
     display: flex;
     align-items: center;
     gap: 4px;
   }
+`;
 
-  .selected {
-    gap: 8px;
-  }
+const HomeSelectedTextNodeStyled = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 368px;
+  padding: 16px;
+
+  background: ${({ theme }) => theme.colors.gray5};
+  color: ${({ theme }) => theme.colors.gray70};
+  border-radius: 8px;
+
+  ${Font13W400};
 `;
