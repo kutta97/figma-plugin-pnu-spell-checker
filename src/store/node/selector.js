@@ -7,14 +7,7 @@ export const totalSelectedNodeCountSelector = createSelector(
   (state) => state.selectedNodes.length
 );
 
-export const selectedNodeCountsSelector = createSelector(
+export const selectedTextNodeValueSelector = createSelector(
   nodeSelector,
-  (state) => ({
-    text: state.selectedNodes.reduce((acc, cur) => {
-      if (cur.type === 'TEXT') return acc + 1;
-      if (cur.type === 'FRAME') return acc + cur.children.length;
-      return acc;
-    }, 0),
-    frame: state.selectedNodes.filter((node) => node.type === 'FRAME').length,
-  })
+  (state) => state.selectedNodes[0].value
 );
