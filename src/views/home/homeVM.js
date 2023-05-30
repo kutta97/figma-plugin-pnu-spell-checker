@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { fromMessage } from '@utils/messages';
 
@@ -9,6 +9,7 @@ import {
   setSelectedNodes,
   totalSelectedNodeCountSelector,
 } from '@store/node';
+import { hideToast, showToast } from '@store/toast';
 
 export const useHomeVM = () => {
   const dispatch = useAppDispatch();
@@ -35,10 +36,14 @@ export const useHomeVM = () => {
   });
 
   useEffect(() => {
-    setIsCheckAvailable(
-      totalSelectedNodeCount === 1 && selectedNode?.type === 'TEXT'
-    );
-  }, [totalSelectedNodeCount, selectedNode]);
+    const value = totalSelectedNodeCount === 1 && selectedNode?.type === 'TEXT';
+    if (value) {
+      dispatch(hideToast());
+    } else {
+      dispatch(showToast('1개의 텍스트 레이어를 선택해 주세요'));
+    }
+    setIsCheckAvailable(value);
+  }, [dispatch, totalSelectedNodeCount, selectedNode]);
 
   const check = () => {
     dispatch(checkListenerConnect());

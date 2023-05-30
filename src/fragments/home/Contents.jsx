@@ -1,8 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-
-import { useAppDispatch } from '@store/hook';
-import { hideToast, showToast } from '@store/toast';
 
 import { Font16W400 } from '@assets/styles/fonts';
 
@@ -12,16 +9,7 @@ import { DefaultHomeContents } from './DefaultHomeContents';
 import { NodeSelectedHomeContents } from './NodeSelectedHomeContents';
 
 export const HomeContents = (props) => {
-  const dispatch = useAppDispatch();
   const { isCheckAvailable } = props;
-
-  useEffect(() => {
-    if (isCheckAvailable) {
-      dispatch(hideToast());
-    } else {
-      dispatch(showToast('1개의 텍스트 레이어를 선택해 주세요'));
-    }
-  }, [dispatch, isCheckAvailable]);
 
   return (
     <HomeContentsStyled>
