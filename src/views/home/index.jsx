@@ -13,11 +13,7 @@ export const Home = () => {
     <HomeStyled>
       <HomeContents isCheckAvailable={isCheckAvailable} />
       <div className="button-container">
-        <Button
-          className="check-button"
-          onClick={check}
-          disabled={!isCheckAvailable}
-        >
+        <Button onClick={check} disabled={!isCheckAvailable}>
           검사하기
         </Button>
       </div>
