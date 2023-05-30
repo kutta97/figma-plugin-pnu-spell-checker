@@ -45,6 +45,7 @@ const NodeSelectedHomeContentsStyled = styled.section`
       font-size: 14px;
       line-height: 140%;
       text-align: left;
+      padding: 0;
     }
   }
 `;

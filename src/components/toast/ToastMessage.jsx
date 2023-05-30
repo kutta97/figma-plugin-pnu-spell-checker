@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import WarningIcon from '@assets/icons/toast/ic_warning.svg';
 import { Font15W400 } from '@assets/styles/fonts';
@@ -17,6 +17,15 @@ export const ToastMessage = (props) => {
     </ToastMessageStyled>
   );
 };
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 const ToastMessageStyled = styled.div`
   max-width: 100%;
@@ -36,6 +45,9 @@ const ToastMessageStyled = styled.div`
   top: 13.5%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  opacity: 0;
+  animation: ${fadeIn} 0.3s forwards;
 
   .icon {
     margin-right: 8px;
