@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import FrameLayerIcon from '@assets/icons/label/ic_framelayer.svg';
 import TextLayerIcon from '@assets/icons/label/ic_textlayer.svg';
-import { Font15W700 } from '@assets/styles/fonts';
+import { Font15W500 } from '@assets/styles/fonts';
 
 const typeName = {
   FRAME: 'Frame',
@@ -49,7 +49,7 @@ const LabelStyled = styled.label`
     max-width: 272px;
     p {
       color: ${({ theme }) => theme.colors.violet};
-      ${Font15W700};
+      ${Font15W500};
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;

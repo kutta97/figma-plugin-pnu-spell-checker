@@ -4,11 +4,12 @@ import { fromMessage } from '@utils/messages';
 
 import { checkListenerConnect } from '@store/home';
 import { useAppDispatch, useAppSelector } from '@store/hook';
-import { setSelectedNodes, totalSelectedNodeCountSelector } from '@store/node';
+import { setSelectedNodes, totalSelectedNodeCountSelector , selectedNodeSelector } from '@store/node';
 
 export const useHomeVM = () => {
   const dispatch = useAppDispatch();
   const totalSelectedNodeCount = useAppSelector(totalSelectedNodeCountSelector);
+  const selectedNode = useAppSelector(selectedNodeSelector);
 
   const getSelectedNodes = async (e) => {
     try {
@@ -28,8 +29,8 @@ export const useHomeVM = () => {
   });
 
   const isCheckAvailable = useMemo(() => {
-    return totalSelectedNodeCount > 0;
-  }, [totalSelectedNodeCount]);
+    return totalSelectedNodeCount === 1 && selectedNode?.type === 'TEXT';
+  }, [totalSelectedNodeCount, selectedNode]);
 
   const check = () => {
     dispatch(checkListenerConnect());

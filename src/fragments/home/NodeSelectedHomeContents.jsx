@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import { Label } from '@components/text/label';
 
 import { useAppSelector } from '@store/hook';
-import { selectedTextNodeSelector } from '@store/node';
+import { selectedNodeSelector } from '@store/node';
 
 export const NodeSelectedHomeContents = (props) => {
-  const selectedTextNode = useAppSelector(selectedTextNodeSelector);
+  const selectedTextNode = useAppSelector(selectedNodeSelector);
   return (
     <NodeSelectedHomeContentsStyled {...props}>
       <span>
