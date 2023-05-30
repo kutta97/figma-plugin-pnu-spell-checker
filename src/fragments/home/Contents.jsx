@@ -1,41 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Label } from '@components/text/label';
+import { Font16W400 } from '@assets/styles/fonts';
 
-import { useAppSelector } from '@store/hook';
-import { selectedNodeCountsSelector } from '@store/node';
-
-const DefaultHomeContents = () => {
-  return (
-    <>
-      <p>작업 영역에서 검사하고자 하는 텍스트가 포함된</p>
-      <p>
-        <Label type="TEXT">Text Layer</Label>
-        <span>혹은</span>
-        <Label type="FRAME">Frame</Label>
-        <span>을</span>
-      </p>
-      <p>선택해 주세요.</p>
-    </>
-  );
-};
-
-const NodeSelectedHomeContents = () => {
-  const selectedNodeCounts = useAppSelector(selectedNodeCountsSelector);
-  return (
-    <>
-      <p className="selected">
-        <Label type="TEXT">Text Layer</Label>
-        <span>{`${selectedNodeCounts.text}개 선택됨`}</span>
-      </p>
-      <p className="selected">
-        <Label type="FRAME">Frame</Label>
-        <span>{`${selectedNodeCounts.frame}개 선택됨`}</span>
-      </p>
-    </>
-  );
-};
+import { DefaultHomeContents } from './DefaultHomeContents';
+import { NodeSelectedHomeContents } from './NodeSelectedHomeContents';
 
 export const HomeContents = (props) => {
   const { isCheckAvailable } = props;
@@ -43,30 +12,41 @@ export const HomeContents = (props) => {
   return (
     <HomeContentsStyled>
       {isCheckAvailable ? (
-        <NodeSelectedHomeContents />
+        <NodeSelectedHomeContents className="selected" />
       ) : (
-        <DefaultHomeContents />
+        <DefaultHomeContents className="default" />
       )}
     </HomeContentsStyled>
   );
 };
 
-const HomeContentsStyled = styled.div`
+const HomeContentsStyled = styled.article`
   display: flex;
   flex-direction: column;
-  gap: 6px;
   width: 100%;
   height: 100%;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: scroll;
+
+  .selected {
+    position: absolute;
+    top: 39px;
+  }
+
+  .default {
+    position: absolute;
+    top: 242px;
+  }
 
   p {
+    ${Font16W400};
+  }
+
+  span {
     display: flex;
     align-items: center;
     gap: 4px;
-  }
-
-  .selected {
-    gap: 8px;
   }
 `;

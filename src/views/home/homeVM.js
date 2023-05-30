@@ -3,14 +3,17 @@ import { useEffect, useMemo } from 'react';
 import { fromMessage } from '@utils/messages';
 
 import { checkListenerConnect } from '@store/home';
-import { homeFilterSelector } from '@store/home/selector';
 import { useAppDispatch, useAppSelector } from '@store/hook';
-import { setSelectedNodes, totalSelectedNodeCountSelector } from '@store/node';
+import {
+  selectedNodeSelector,
+  setSelectedNodes,
+  totalSelectedNodeCountSelector,
+} from '@store/node';
 
 export const useHomeVM = () => {
   const dispatch = useAppDispatch();
-  const filtered = useAppSelector(homeFilterSelector);
   const totalSelectedNodeCount = useAppSelector(totalSelectedNodeCountSelector);
+  const selectedNode = useAppSelector(selectedNodeSelector);
 
   const getSelectedNodes = async (e) => {
     try {
@@ -30,15 +33,14 @@ export const useHomeVM = () => {
   });
 
   const isCheckAvailable = useMemo(() => {
-    return totalSelectedNodeCount > 0;
-  }, [totalSelectedNodeCount]);
+    return totalSelectedNodeCount === 1 && selectedNode?.type === 'TEXT';
+  }, [totalSelectedNodeCount, selectedNode]);
 
   const check = () => {
     dispatch(checkListenerConnect());
   };
 
   return {
-    filtered,
     isCheckAvailable,
     check,
   };
