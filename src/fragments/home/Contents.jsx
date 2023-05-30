@@ -1,44 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
-import { ToastMessage } from '@components/toast/ToastMessage';
+import { useAppDispatch } from '@store/hook';
+import { hideToast, showToast } from '@store/toast';
 
 import { Font16W400 } from '@assets/styles/fonts';
+
+import { Toast } from '@fragments/toast/Toast';
 
 import { DefaultHomeContents } from './DefaultHomeContents';
 import { NodeSelectedHomeContents } from './NodeSelectedHomeContents';
 
 export const HomeContents = (props) => {
+  const dispatch = useAppDispatch();
   const { isCheckAvailable } = props;
-  const [message, setMessage] = useState('');
-  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
-    if (!showToast) return undefined;
-    const timer = setTimeout(() => {
-      setShowToast(false);
-    }, 4000);
-    return () => clearTimeout(timer);
-  }, [showToast]);
-
-  const handelShowToast = () => {
-    setMessage('1개의 텍스트 레이어를 선택해 주세요');
-    setShowToast(true);
-  };
+    if (isCheckAvailable) {
+      dispatch(hideToast());
+    } else {
+      dispatch(showToast('1개의 텍스트 레이어를 선택해 주세요'));
+    }
+  }, [dispatch, isCheckAvailable]);
 
   return (
-    <HomeContentsStyled onClick={handelShowToast}>
+    <HomeContentsStyled>
       {isCheckAvailable ? (
         <NodeSelectedHomeContents className="selected" />
       ) : (
         <DefaultHomeContents className="default" />
       )}
-      {showToast &&
-        createPortal(
-          <ToastMessage>{message}</ToastMessage>,
-          document.getElementById('root')
-        )}
+      <Toast />
     </HomeContentsStyled>
   );
 };

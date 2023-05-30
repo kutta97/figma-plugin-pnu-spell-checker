@@ -11,11 +11,11 @@ export const NodeSelectedHomeContents = (props) => {
   return (
     <NodeSelectedHomeContentsStyled {...props}>
       <span>
-        <NodeLabel type="TEXT">{selectedTextNode.name}</NodeLabel>
+        <NodeLabel type="TEXT">{selectedTextNode?.name}</NodeLabel>
         <p>선택됨</p>
       </span>
       <div className="selected-text-node-contents">
-        <p>{selectedTextNode.value}</p>
+        <p>{selectedTextNode?.value}</p>
       </div>
     </NodeSelectedHomeContentsStyled>
   );

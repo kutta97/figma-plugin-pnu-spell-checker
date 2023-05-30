@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { fromMessage } from '@utils/messages';
 
@@ -14,6 +14,8 @@ export const useHomeVM = () => {
   const dispatch = useAppDispatch();
   const totalSelectedNodeCount = useAppSelector(totalSelectedNodeCountSelector);
   const selectedNode = useAppSelector(selectedNodeSelector);
+
+  const [isCheckAvailable, setIsCheckAvailable] = useState(false);
 
   const getSelectedNodes = async (e) => {
     try {
@@ -32,8 +34,10 @@ export const useHomeVM = () => {
     };
   });
 
-  const isCheckAvailable = useMemo(() => {
-    return totalSelectedNodeCount === 1 && selectedNode?.type === 'TEXT';
+  useEffect(() => {
+    setIsCheckAvailable(
+      totalSelectedNodeCount === 1 && selectedNode?.type === 'TEXT'
+    );
   }, [totalSelectedNodeCount, selectedNode]);
 
   const check = () => {
