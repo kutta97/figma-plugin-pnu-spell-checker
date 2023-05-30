@@ -5,8 +5,13 @@ import FrameLayerIcon from '@assets/icons/label/ic_framelayer.svg';
 import TextLayerIcon from '@assets/icons/label/ic_textlayer.svg';
 import { Font15W700 } from '@assets/styles/fonts';
 
+const typeName = {
+  FRAME: 'Frame',
+  TEXT: 'Text',
+};
+
 export const Label = (props) => {
-  const { type } = props;
+  const { type, children } = props;
 
   const renderIcon = () => {
     switch (type) {
@@ -19,21 +24,12 @@ export const Label = (props) => {
     }
   };
 
-  const renderContents = () => {
-    switch (type) {
-      case 'FRAME':
-        return <p>{`{Frame Layer}`}</p>;
-      case 'TEXT':
-        return <p>{`{Text Layer}`}</p>;
-      default:
-        return null;
-    }
-  };
-
   return (
     <LabelStyled {...props}>
       <span className="icon">{renderIcon()}</span>
-      <span className="contents">{renderContents()}</span>
+      <span className="contents">
+        <p>{children ?? `{${typeName[type]} Layer}`}</p>
+      </span>
     </LabelStyled>
   );
 };
@@ -50,9 +46,13 @@ const LabelStyled = styled.label`
   }
 
   .contents {
+    max-width: 272px;
     p {
       color: ${({ theme }) => theme.colors.violet};
       ${Font15W700};
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 `;

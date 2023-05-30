@@ -4,18 +4,18 @@ import styled from 'styled-components';
 import { Label } from '@components/text/label';
 
 import { useAppSelector } from '@store/hook';
-import { selectedTextNodeValueSelector } from '@store/node';
+import { selectedTextNodeSelector } from '@store/node';
 
 export const NodeSelectedHomeContents = (props) => {
-  const selectedTextNodeValue = useAppSelector(selectedTextNodeValueSelector);
+  const selectedTextNode = useAppSelector(selectedTextNodeSelector);
   return (
     <NodeSelectedHomeContentsStyled {...props}>
       <span>
-        <Label type="TEXT" />
+        <Label type="TEXT">{selectedTextNode.name}</Label>
         <p>선택됨</p>
       </span>
       <div className="selected-text-node-contents">
-        <p>{selectedTextNodeValue}</p>
+        <p>{selectedTextNode.value}</p>
       </div>
     </NodeSelectedHomeContentsStyled>
   );

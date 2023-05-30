@@ -7,7 +7,7 @@ export const totalSelectedNodeCountSelector = createSelector(
   (state) => state.selectedNodes.length
 );
 
-export const selectedTextNodeValueSelector = createSelector(
+export const selectedTextNodeSelector = createSelector(
   nodeSelector,
-  (state) => state.selectedNodes[0].value
+  (state) => state.selectedNodes[0]
 );
