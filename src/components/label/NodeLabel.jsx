@@ -10,7 +10,7 @@ const typeName = {
   TEXT: 'Text',
 };
 
-export const Label = (props) => {
+export const NodeLabel = (props) => {
   const { type, children } = props;
 
   const renderIcon = () => {
@@ -25,16 +25,16 @@ export const Label = (props) => {
   };
 
   return (
-    <LabelStyled {...props}>
+    <NodeLabelStyled {...props}>
       <span className="icon">{renderIcon()}</span>
       <span className="contents">
         <p>{children ?? `{${typeName[type]} Layer}`}</p>
       </span>
-    </LabelStyled>
+    </NodeLabelStyled>
   );
 };
 
-const LabelStyled = styled.label`
+const NodeLabelStyled = styled.label`
   display: inline-flex;
   height: 30px;
   border-radius: 4px;
