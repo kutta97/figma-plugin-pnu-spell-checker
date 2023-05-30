@@ -34,12 +34,7 @@ const HomeStyled = styled.main`
 
   .button-container {
     width: 100%;
+    height: 76px;
     padding: 12px 16px;
-    .check-button {
-      height: 52px;
-      &:disabled {
-        background: ${({ theme }) => theme.colors.gray15};
-      }
-    }
   }
 `;

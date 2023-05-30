@@ -8,6 +8,13 @@ export const Font18W700 = css`
   text-align: center;
 `;
 
+export const Font18W600 = css`
+  ${({ theme }) => theme.fontSizes.s18}
+  font-style: normal;
+  font-weight: 600;
+  text-align: center;
+`;
+
 /** font-size: 16 */
 export const Font16W700 = css`
   ${({ theme }) => theme.fontSizes.s16}
