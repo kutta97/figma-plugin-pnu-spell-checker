@@ -5,9 +5,9 @@ import { Label } from '@components/text/label';
 
 import { Font16W400 } from '@assets/styles/fonts';
 
-export const DefaultHomeContents = () => {
+export const DefaultHomeContents = (props) => {
   return (
-    <DefaultHomeContentsStyled>
+    <DefaultHomeContentsStyled {...props}>
       <p>작업 영역에서 검사하고자 하는 텍스트가 포함된</p>
       <span>
         <Label type="TEXT" />
@@ -26,6 +26,7 @@ const DefaultHomeContentsStyled = styled.section`
 
   p {
     ${Font16W400};
+    height: 19px;
   }
 
   span {

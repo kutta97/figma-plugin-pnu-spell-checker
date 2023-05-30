@@ -9,13 +9,11 @@ export const HomeContents = (props) => {
 
   return (
     <HomeContentsStyled>
-      <div className="home-content-wrapper">
-        {isCheckAvailable ? (
-          <NodeSelectedHomeContents />
-        ) : (
-          <DefaultHomeContents />
-        )}
-      </div>
+      {isCheckAvailable ? (
+        <NodeSelectedHomeContents />
+      ) : (
+        <DefaultHomeContents className="default" />
+      )}
     </HomeContentsStyled>
   );
 };
@@ -27,4 +25,10 @@ const HomeContentsStyled = styled.article`
   height: 100%;
   align-items: center;
   justify-content: center;
+  position: relative;
+
+  .default {
+    position: absolute;
+    top: 242px;
+  }
 `;
