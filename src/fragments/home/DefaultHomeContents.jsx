@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 import { Label } from '@components/text/label';
 
-import { Font16W400 } from '@assets/styles/fonts';
-
 export const DefaultHomeContents = (props) => {
   return (
     <DefaultHomeContentsStyled {...props}>
@@ -23,16 +21,4 @@ const DefaultHomeContentsStyled = styled.section`
   gap: 8px;
   align-items: center;
   padding: 16px 20px;
-
-  p {
-    ${Font16W400};
-    height: 19px;
-  }
-
-  span {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 4px;
-  }
 `;

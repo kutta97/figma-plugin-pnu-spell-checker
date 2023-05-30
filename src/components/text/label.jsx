@@ -40,6 +40,7 @@ export const Label = (props) => {
 
 const LabelStyled = styled.label`
   display: inline-flex;
+  height: 30px;
   border-radius: 4px;
   padding: 6px 8px;
   background: ${({ theme }) => theme.colors.gray5};
