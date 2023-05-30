@@ -23,7 +23,21 @@ export const Font16W700 = css`
   text-align: center;
 `;
 
+export const Font16W400 = css`
+  ${({ theme }) => theme.fontSizes.s16}
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+`;
+
 /** font-size: 15 */
+export const Font15W700 = css`
+  ${({ theme }) => theme.fontSizes.s15}
+  font-style: normal;
+  font-weight: 700;
+  text-align: center;
+`;
+
 export const Font15W600 = css`
   ${({ theme }) => theme.fontSizes.s15}
   font-style: normal;
@@ -57,6 +71,13 @@ export const Font14W500 = css`
   ${({ theme }) => theme.fontSizes.s14}
   font-style: normal;
   font-weight: 500;
+  text-align: center;
+`;
+
+export const Font14W400 = css`
+  ${({ theme }) => theme.fontSizes.s14}
+  font-style: normal;
+  font-weight: 400;
   text-align: center;
 `;
 
