@@ -28,6 +28,7 @@ const HomeContentsStyled = styled.article`
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: scroll;
 
   .selected {
     position: absolute;
