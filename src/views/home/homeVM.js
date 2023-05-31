@@ -23,6 +23,12 @@ export const useHomeVM = () => {
       const data = await fromMessage(e);
       if (data.pluginMessage.query !== 'selectionchange') return;
       dispatch(setSelectedNodes(data.pluginMessage.selectedNodesWithText));
+      const nodeCount = data.pluginMessage.selectedNodesWithText?.length;
+      const nodeType = data.pluginMessage.selectedNodesWithText[0]?.type;
+      const checkAvailable = nodeCount === 1 && nodeType === 'TEXT';
+      if (!checkAvailable) {
+        dispatch(showToast('1개의 텍스트 레이어를 선택해 주세요'));
+      }
     } catch (error) {
       console.error(e);
     }
@@ -37,11 +43,7 @@ export const useHomeVM = () => {
 
   useEffect(() => {
     const value = totalSelectedNodeCount === 1 && selectedNode?.type === 'TEXT';
-    if (value) {
-      dispatch(hideToast());
-    } else {
-      dispatch(showToast('1개의 텍스트 레이어를 선택해 주세요'));
-    }
+    if (value) dispatch(hideToast());
     setIsCheckAvailable(value);
   }, [dispatch, totalSelectedNodeCount, selectedNode]);
 
