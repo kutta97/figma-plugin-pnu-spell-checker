@@ -15,7 +15,7 @@ export const NodeSelectedHomeContents = (props) => {
         <p>선택됨</p>
       </span>
       <div className="selected-text-node-contents">
-        <p>{selectedTextNode?.value}</p>
+        <p>{selectedTextNode?.value ?? ''}</p>
       </div>
     </NodeSelectedHomeContentsStyled>
   );
