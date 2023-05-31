@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import { Font16W400 } from '@assets/styles/fonts';
 
+import { Toast } from '@fragments/toast/Toast';
+
 import { DefaultHomeContents } from './DefaultHomeContents';
 import { NodeSelectedHomeContents } from './NodeSelectedHomeContents';
 
@@ -16,6 +18,7 @@ export const HomeContents = (props) => {
       ) : (
         <DefaultHomeContents className="default" />
       )}
+      <Toast />
     </HomeContentsStyled>
   );
 };
