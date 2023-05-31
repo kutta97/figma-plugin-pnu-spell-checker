@@ -41,7 +41,7 @@ const ToastMessageStyled = styled.div`
   border-radius: 8px;
 
   position: fixed;
-  z-index: 2;
+  z-index: 1000;
   top: 13.5%;
   left: 50%;
   transform: translate(-50%, -50%);
