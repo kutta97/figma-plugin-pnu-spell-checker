@@ -20,7 +20,9 @@ export const ResultListItem = (props) => {
     <ResultItemContainer help={result.help} {...props}>
       <ResultListItemStyled>
         <p className="before">{result.beforeText}</p>
-        <RightArrow width={13} height={17} />
+        <span>
+          <RightArrow className="right-arrow" width={13} height={17} />
+        </span>
         <p className="after">{result.afterText}</p>
       </ResultListItemStyled>
     </ResultItemContainer>
@@ -29,12 +31,18 @@ export const ResultListItem = (props) => {
 
 const ResultListItemStyled = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 4px;
+
   .before {
     ${Font14W400}
+    text-align: start;
+    word-break: break-all;
   }
+
   .after {
     ${Font14W700}
+    text-align: start;
+    word-break: break-all;
   }
 `;
