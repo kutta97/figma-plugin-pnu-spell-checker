@@ -11,7 +11,14 @@ import { ResultContents } from '@fragments/result/Contents';
 import { useResultVM } from '@views/result/resultVM';
 
 export const Result = () => {
-  const { isResultEmpty, checkAll, convert, goDetail, goHome } = useResultVM();
+  const {
+    isResultEmpty,
+    isSelectedResultEmpty,
+    isAllResultSelected,
+    toggleCheckAll,
+    convert,
+    goHome,
+  } = useResultVM();
   return (
     <ResultStyled>
       <ResultContents isResultEmpty={isResultEmpty} />
@@ -22,10 +29,17 @@ export const Result = () => {
           </Button>
         ) : (
           <>
-            <CheckboxText onCheck={checkAll}>
+            <CheckboxText
+              onCheck={toggleCheckAll}
+              checked={isAllResultSelected}
+            >
               <p>전체 선택</p>
             </CheckboxText>
-            <Button className="button" onClick={convert}>
+            <Button
+              className="button"
+              onClick={convert}
+              disabled={isSelectedResultEmpty}
+            >
               텍스트 변환하기
             </Button>
           </>
