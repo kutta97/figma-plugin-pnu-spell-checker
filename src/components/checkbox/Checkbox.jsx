@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import CheckedIcon from '@assets/icons/check/ic_checkbox_checked.svg';
@@ -8,6 +8,10 @@ export const Checkbox = (props) => {
   const { checked, onCheck } = props;
 
   const [isChecked, setIsChecked] = useState(checked ?? false);
+
+  useEffect(() => {
+    setIsChecked(checked);
+  }, [checked]);
 
   const handleChange = (e) => {
     setIsChecked(e.target.checked);
