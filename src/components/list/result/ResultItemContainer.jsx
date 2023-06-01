@@ -1,45 +1,53 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { MoreButton } from '@components/buttons/MoreButton';
 import { CheckboxText } from '@components/checkbox/CheckboxText';
 
+import { Font14W400 } from '@assets/styles/fonts';
+
 export const ResultItemContainer = (props) => {
-  const { onCheck, onClickMore, children } = props;
+  const { onCheck, checked, help, children } = props;
 
   const handleCheck = () => onCheck?.();
-  const handleClickMore = () => onClickMore?.();
 
   return (
     <ResultListItemContainerStyled>
-      <CheckboxText className="checkbox" onCheck={handleCheck}>
+      <CheckboxText
+        className="checkbox-text"
+        onCheck={handleCheck}
+        checked={checked}
+      >
         {children}
       </CheckboxText>
-      <MoreButton className="more" onClick={handleClickMore}>
-        자세히
-      </MoreButton>
+      <HelpCorrectContents>
+        <p>{help}</p>
+      </HelpCorrectContents>
     </ResultListItemContainerStyled>
   );
 };
 
-const ResultListItemContainerStyled = styled.div`
+const ResultListItemContainerStyled = styled.section`
+  display: flex;
+  flex-direction: column;
+
+  .checkbox-text {
+    padding: 10px 16px;
+  }
+`;
+
+const HelpCorrectContents = styled.div`
   display: flex;
   align-items: center;
+  width: 368px;
   padding: 10px 16px;
+  margin: 0 16px;
 
-  &:hover {
-    background: ${({ theme }) => theme.colors.gray3};
-    .more {
-      visibility: visible;
-    }
-  }
+  background: ${({ theme }) => theme.colors.gray3};
+  color: ${({ theme }) => theme.colors.gray50};
+  border-radius: 8px;
 
-  .checkbox {
-    margin-right: 6px;
-  }
-
-  .more {
-    visibility: hidden;
-    margin-left: auto;
+  p {
+    ${Font14W400}
+    text-align: start;
   }
 `;

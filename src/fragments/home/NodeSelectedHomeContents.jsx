@@ -14,9 +14,9 @@ export const NodeSelectedHomeContents = (props) => {
         <NodeLabel type="TEXT">{selectedTextNode?.name}</NodeLabel>
         <p>선택됨</p>
       </span>
-      <div className="selected-text-node-contents">
+      <SelectedTextNodeContents>
         <p>{selectedTextNode?.value ?? ''}</p>
-      </div>
+      </SelectedTextNodeContents>
     </NodeSelectedHomeContentsStyled>
   );
 };
@@ -27,25 +27,25 @@ const NodeSelectedHomeContentsStyled = styled.section`
   gap: 20px;
   align-items: center;
   padding: 0 16px;
+`;
 
-  .selected-text-node-contents {
-    display: flex;
-    align-items: center;
-    width: 368px;
-    padding: 16px;
+const SelectedTextNodeContents = styled.div`
+  display: flex;
+  align-items: center;
+  width: 368px;
+  padding: 16px;
 
-    background: ${({ theme }) => theme.colors.gray5};
-    color: ${({ theme }) => theme.colors.gray70};
-    border-radius: 8px;
+  background: ${({ theme }) => theme.colors.gray5};
+  color: ${({ theme }) => theme.colors.gray70};
+  border-radius: 8px;
 
-    p {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 140%;
-      text-align: left;
-      padding: 0;
-    }
+  p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    text-align: start;
+    padding: 0;
   }
 `;

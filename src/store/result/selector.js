@@ -11,3 +11,8 @@ export const resultListSelector = createSelector(
   resultSelector,
   (state) => state.resultList
 );
+
+export const selectedResultCountSelector = createSelector(
+  resultSelector,
+  (state) => state.resultList.filter((result) => result.checked).length
+);

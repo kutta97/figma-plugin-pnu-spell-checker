@@ -11,7 +11,24 @@ export const resultSlice = createSlice({
   reducers: {
     convertListenerConnect: (state, action) => {},
     setResultList: (state, action) => {
-      state.resultList = action.payload;
+      const results = action.payload;
+      state.resultList = results.map((result) => {
+        return { ...result, checked: false };
+      });
+    },
+    toggleAllResultSelection: (state, action) => {
+      const isChecked = action.payload;
+      state.resultList = state.resultList.map((result) => {
+        return { ...result, checked: isChecked };
+      });
+    },
+    toggleResultSelection: (state, action) => {
+      const id = action.payload;
+      state.resultList = state.resultList.map((result) => {
+        return result.id === id
+          ? { ...result, checked: !result.checked }
+          : result;
+      });
     },
   },
 });

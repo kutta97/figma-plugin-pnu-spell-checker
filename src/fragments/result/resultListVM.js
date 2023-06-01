@@ -1,7 +1,15 @@
+import { useDispatch } from 'react-redux';
+
+import { useAppSelector } from '@store/hook';
+import { resultListSelector, toggleResultSelection } from '@store/result';
+
 export const useResultListVM = () => {
-  const handleCheck = (id) => () => {};
+  const dispatch = useDispatch();
+  const resultList = useAppSelector(resultListSelector);
 
-  const handleClickMore = (id) => () => {};
+  const handleCheck = (id) => () => {
+    dispatch(toggleResultSelection(id));
+  };
 
-  return { handleCheck, handleClickMore };
+  return { resultList, handleCheck };
 };
