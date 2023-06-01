@@ -7,20 +7,24 @@ import { useResultListVM } from '@fragments/result/resultListVM';
 
 export const ResultList = (props) => {
   const { resultList } = props;
-  const { handleCheck, handleClickMore } = useResultListVM();
+  const { handleCheck } = useResultListVM();
 
   return (
     <ResultListStyled>
       {resultList.map((item) => (
         <ResultListItem
           key={item.id}
-          data={item.data}
+          result={item.data}
           onCheck={handleCheck(item.id)}
-          onClickMore={handleClickMore(item.id)}
+          checked={item.checked}
         />
       ))}
     </ResultListStyled>
   );
 };
 
-const ResultListStyled = styled.section``;
+const ResultListStyled = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
