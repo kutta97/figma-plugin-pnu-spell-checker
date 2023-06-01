@@ -60,6 +60,13 @@ export const Font15W400 = css`
 `;
 
 /** font-size: 14 */
+export const Font14W700 = css`
+  ${({ theme }) => theme.fontSizes.s14}
+  font-style: normal;
+  font-weight: 700;
+  text-align: center;
+`;
+
 export const Font14W600 = css`
   ${({ theme }) => theme.fontSizes.s14}
   font-style: normal;
