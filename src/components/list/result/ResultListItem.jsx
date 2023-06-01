@@ -19,15 +19,15 @@ export const ResultListItem = (props) => {
   return (
     <ResultItemContainer help={result.help} {...props}>
       <ResultListItemStyled>
-        <span className="before">{result.beforeText}</span>
-        <RightArrow width={13} height={16} />
-        <span className="after">{result.afterText}</span>
+        <p className="before">{result.beforeText}</p>
+        <RightArrow width={13} height={17} />
+        <p className="after">{result.afterText}</p>
       </ResultListItemStyled>
     </ResultItemContainer>
   );
 };
 
-const ResultListItemStyled = styled.p`
+const ResultListItemStyled = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
