@@ -15,7 +15,7 @@ export const Results = () => {
   return (
     <ResultsStyled>
       <ResultList resultList={resultList} />
-      {resultWithMultipleRecommendList.length && (
+      {resultWithMultipleRecommendList.length > 0 && (
         <ResultMultipleRecommendList
           resultWithMultipleRecommendList={resultWithMultipleRecommendList}
         />

@@ -8,29 +8,33 @@
 const getResultDataObj = (error) => {
   return {
     beforeText: error.checking.text,
-    afterText: error.recommend[0],
+    afterText: error.recommend,
     help: error.errorExplanation.replaceAll('<br/>', '\n'),
+  };
+};
+
+const createErrorResult = (error, index) => {
+  return {
+    id: index,
+    data: getResultDataObj(error),
   };
 };
 
 const getResult = (data) => {
   return data.errors.reduce(
     (obj, error, index) => {
+      const result = createErrorResult(error, index);
       if (error.recommend.length === 1) {
-        obj.results.push({
-          id: index,
-          index: {
-            startIndex: error.checking.startIndex,
-            deleteCount: error.checking.text.length,
-          },
-          data: getResultDataObj(error),
-        });
+        result.index = {
+          startIndex: error.checking.startIndex,
+          deleteCount: error.checking.text.length,
+        };
+        result.data.afterText = error.recommend.at(0);
+        obj.results.push(result);
       }
       if (error.recommend.length > 1) {
-        obj.resultsWithMultipleRecommends.push({
-          id: index,
-          data: getResultDataObj(error),
-        });
+        result.data.afterText = error.recommend.join(', ');
+        obj.resultsWithMultipleRecommends.push(result);
       }
       return obj;
     },
