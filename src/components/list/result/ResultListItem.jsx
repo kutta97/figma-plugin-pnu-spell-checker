@@ -1,48 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import RightArrow from '@assets/icons/list/ic_arrow_right.svg';
-import { Font14W400, Font14W700 } from '@assets/styles/fonts';
+import { CheckboxText } from '@components/checkbox/CheckboxText';
 
-import { ResultItemContainer } from './ResultItemContainer';
+import { ResultChangeText } from './ResultChangeText';
+import { ResultHelpCorrect } from './ResultHelpCorrect';
 
 export const ResultListItem = (props) => {
-  /**
-   * data: {
-   *  beforeText: string,
-   *  afterText: string,
-   *  help: string,
-   * }
-   */
-  const { result } = props;
+  const { result, onCheck, checked } = props;
+
+  const handleCheck = () => onCheck?.();
 
   return (
-    <ResultItemContainer help={result.help} {...props}>
-      <ResultListItemStyled>
-        <p className="before">{result.beforeText}</p>
-        <span>
-          <RightArrow className="right-arrow" width={13} height={17} />
-        </span>
-        <p className="after">{result.afterText}</p>
-      </ResultListItemStyled>
-    </ResultItemContainer>
+    <ResultListItemStyled {...props}>
+      <CheckboxText
+        className="checkbox-text"
+        onCheck={handleCheck}
+        checked={checked}
+      >
+        <ResultChangeText result={result} />
+      </CheckboxText>
+      <ResultHelpCorrect help={result.help} />
+    </ResultListItemStyled>
   );
 };
 
-const ResultListItemStyled = styled.div`
+const ResultListItemStyled = styled.section`
   display: flex;
-  align-items: flex-start;
-  gap: 4px;
+  flex-direction: column;
 
-  .before {
-    ${Font14W400}
-    text-align: start;
-    word-break: break-all;
-  }
-
-  .after {
-    ${Font14W700}
-    text-align: start;
-    word-break: break-all;
+  .checkbox-text {
+    padding: 10px 16px;
   }
 `;
