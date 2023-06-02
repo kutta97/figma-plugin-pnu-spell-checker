@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { deepCopy } from '@utils/deepCopy';
+
 const initialState = {
   name: 'initial name home',
   resultList: [],
@@ -17,8 +19,9 @@ export const resultSlice = createSlice({
       state.resultList = results.map((result) => {
         return { ...result, checked: false };
       });
-      state.resultsWithMultipleRecommendList =
-        resultsWithMultipleRecommends.map((result) => result);
+      state.resultsWithMultipleRecommendList = deepCopy(
+        resultsWithMultipleRecommends
+      );
     },
     toggleAllResultSelection: (state, action) => {
       const isChecked = action.payload;
