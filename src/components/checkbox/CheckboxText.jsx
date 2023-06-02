@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { Checkbox } from '@components/checkbox/Checkbox';
 
 export const CheckboxText = (props) => {
-  const { onCheck, checked, children } = props;
+  const { onCheck, checked, children, className } = props;
   return (
-    <CheckboxStyled {...props}>
+    <CheckboxStyled className={className}>
       <Checkbox className="checkbox" onCheck={onCheck} checked={checked} />
       {children}
     </CheckboxStyled>

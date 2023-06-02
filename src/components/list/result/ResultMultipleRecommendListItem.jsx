@@ -5,10 +5,10 @@ import { ResultChangeText } from './ResultChangeText';
 import { ResultHelpCorrect } from './ResultHelpCorrect';
 
 export const ResultMultipleRecommendListItem = (props) => {
-  const { result } = props;
+  const { result, className } = props;
 
   return (
-    <ResultMultipleRecommendListItemStyled {...props}>
+    <ResultMultipleRecommendListItemStyled className={className}>
       <div className="change-text-continer">
         <ResultChangeText result={result} />
       </div>

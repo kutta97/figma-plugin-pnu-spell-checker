@@ -7,12 +7,12 @@ import { ResultChangeText } from './ResultChangeText';
 import { ResultHelpCorrect } from './ResultHelpCorrect';
 
 export const ResultListItem = (props) => {
-  const { result, onCheck, checked } = props;
+  const { result, onCheck, checked, className } = props;
 
   const handleCheck = () => onCheck?.();
 
   return (
-    <ResultListItemStyled {...props}>
+    <ResultListItemStyled className={className}>
       <CheckboxText
         className="checkbox-text"
         onCheck={handleCheck}
