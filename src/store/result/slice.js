@@ -5,7 +5,7 @@ import { deepCopy } from '@utils/deepCopy';
 const initialState = {
   name: 'initial name home',
   resultList: [],
-  resultsWithMultipleRecommendList: [],
+  resultWithMultipleRecommendList: [],
 };
 
 export const resultSlice = createSlice({
@@ -19,7 +19,7 @@ export const resultSlice = createSlice({
       state.resultList = results.map((result) => {
         return { ...result, checked: false };
       });
-      state.resultsWithMultipleRecommendList = deepCopy(
+      state.resultWithMultipleRecommendList = deepCopy(
         resultsWithMultipleRecommends
       );
     },

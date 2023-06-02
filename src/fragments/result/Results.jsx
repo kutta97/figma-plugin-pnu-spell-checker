@@ -2,18 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { useAppSelector } from '@store/hook';
-import { resultListSelector } from '@store/result';
-import { resultWithMultipleRecommendListSelector } from '@store/result/selector';
+import { resultSelector } from '@store/result';
 
 import { ResultList } from '@fragments/result/ResultList';
 
 import { ResultMultipleRecommendList } from './ResultMultipleRecommendList';
 
 export const Results = () => {
-  const resultList = useAppSelector(resultListSelector);
-  const resultWithMultipleRecommendList = useAppSelector(
-    resultWithMultipleRecommendListSelector
-  );
+  const { resultList, resultWithMultipleRecommendList } =
+    useAppSelector(resultSelector);
 
   return (
     <ResultsStyled>

@@ -5,17 +5,12 @@ export const resultSelector = (state) => state.resultReducer;
 export const resultCountSelector = createSelector(
   resultSelector,
   (state) =>
-    state.resultList.length + state.resultsWithMultipleRecommendList.length
+    state.resultList.length + state.resultWithMultipleRecommendList.length
 );
 
 export const resultListSelector = createSelector(
   resultSelector,
   (state) => state.resultList
-);
-
-export const resultWithMultipleRecommendListSelector = createSelector(
-  resultSelector,
-  (state) => state.resultsWithMultipleRecommendList
 );
 
 export const selectedResultCountSelector = createSelector(
