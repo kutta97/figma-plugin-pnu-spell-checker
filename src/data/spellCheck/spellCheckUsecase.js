@@ -10,18 +10,35 @@ export const SpellCheckUsecase = (api) => {
       const response = await api(originalText);
       const data = await response.json();
 
-      return data.errors
-        .filter((error) => error.recommend.length === 1)
-        .map((error, index) => {
-          return {
-            id: index,
-            data: {
-              beforeText: error.checking.text,
-              afterText: error.recommend[0],
-              help: error.errorExplanation.replaceAll('<br/>', '\n'),
-            },
-          };
-        });
+      return {
+        results: data.errors
+          .filter((error) => error.recommend.length === 1)
+          .map((error, index) => {
+            return {
+              id: index,
+              index: {
+                startIndex: error.checking.startIndex,
+                deleteCount: error.checking.text.length,
+              },
+              data: {
+                beforeText: error.checking.text,
+                afterText: error.recommend[0],
+                help: error.errorExplanation.replaceAll('<br/>', '\n'),
+              },
+            };
+          }),
+        manyRecommendResults: data.errors
+          .filter((error) => error.recommend.length > 1)
+          .map((error, index) => {
+            return {
+              id: index,
+              data: {
+                beforeText: error.checking.text,
+                afterText: error.recommend.join(', '),
+              },
+            };
+          }),
+      };
     },
   };
 };
