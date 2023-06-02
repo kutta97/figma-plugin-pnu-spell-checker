@@ -12,12 +12,13 @@ export const resultSlice = createSlice({
   reducers: {
     convertListenerConnect: (state, action) => {},
     setResultList: (state, action) => {
-      const results = action.payload;
-      state.resultList = results.results.map((result) => {
+      const { results, resultsWithMultipleRecommends } = action.payload;
+
+      state.resultList = results.map((result) => {
         return { ...result, checked: false };
       });
       state.resultsWithMultipleRecommendList =
-        results.resultsWithMultipleRecommends.map((result) => result);
+        resultsWithMultipleRecommends.map((result) => result);
     },
     toggleAllResultSelection: (state, action) => {
       const isChecked = action.payload;
