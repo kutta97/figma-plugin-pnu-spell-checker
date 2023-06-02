@@ -49,5 +49,6 @@ const HelpCorrectContents = styled.div`
   p {
     ${Font14W400}
     text-align: start;
+    white-space: pre-line;
   }
 `;
