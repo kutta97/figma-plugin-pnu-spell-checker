@@ -27,7 +27,7 @@ export const SpellCheckUsecase = (api) => {
               },
             };
           }),
-        manyRecommendResults: data.errors
+        resultsWithMultipleRecommends: data.errors
           .filter((error) => error.recommend.length > 1)
           .map((error, index) => {
             return {
@@ -35,6 +35,7 @@ export const SpellCheckUsecase = (api) => {
               data: {
                 beforeText: error.checking.text,
                 afterText: error.recommend.join(', '),
+                help: error.errorExplanation.replaceAll('<br/>', '\n'),
               },
             };
           }),
