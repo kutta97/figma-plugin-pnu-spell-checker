@@ -14,28 +14,31 @@ const getResultDataObj = (error) => {
 };
 
 const getResult = (data) => {
-  return {
-    results: data.errors
-      .filter((error) => error.recommend.length === 1)
-      .map((error, index) => {
-        return {
+  return data.errors.reduce(
+    (obj, error, index) => {
+      if (error.recommend.length === 1) {
+        obj.results.push({
           id: index,
           index: {
             startIndex: error.checking.startIndex,
             deleteCount: error.checking.text.length,
           },
           data: getResultDataObj(error),
-        };
-      }),
-    resultsWithMultipleRecommends: data.errors
-      .filter((error) => error.recommend.length > 1)
-      .map((error, index) => {
-        return {
+        });
+      }
+      if (error.recommend.length > 1) {
+        obj.resultsWithMultipleRecommends.push({
           id: index,
           data: getResultDataObj(error),
-        };
-      }),
-  };
+        });
+      }
+      return obj;
+    },
+    {
+      results: [],
+      resultsWithMultipleRecommends: [],
+    }
+  );
 };
 
 export const SpellCheckUsecase = (api) => {
