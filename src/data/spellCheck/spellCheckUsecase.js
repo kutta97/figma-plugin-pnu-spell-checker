@@ -41,10 +41,15 @@ const getResult = (data) => {
 export const SpellCheckUsecase = (api) => {
   return {
     getSpellCheck: async (originalText) => {
-      const response = await api(originalText);
-      const data = await response.json();
+      try {
+        const response = await api(originalText);
+        const data = await response.json();
 
-      return getResult(data);
+        return getResult(data);
+      } catch (e) {
+        console.error(e);
+      }
+      return null;
     },
   };
 };
