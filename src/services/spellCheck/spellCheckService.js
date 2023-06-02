@@ -4,11 +4,21 @@
  * @constructor
  */
 export const SpellCheckService = () => {
-  const domain = 'http://localhost:8000/spellcheck/'; // TODO connect with base url (for Figma API)
+  const BASE_URL = process.env.API_SERVER;
+  const API_TOKEN = process.env.TOKEN;
 
   return {
     getSpellCheck: async (spell) => {
-      return fetch(`${domain}${spell}`); // call API
+      return fetch(`${BASE_URL}/check`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          text: spell,
+          token: API_TOKEN,
+        }),
+      });
     },
   };
 };
