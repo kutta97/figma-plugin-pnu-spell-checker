@@ -56,7 +56,10 @@ export const SpellCheckUsecase = (api) => {
       } catch (e) {
         console.error(e);
       }
-      return null;
+      return {
+        results: [],
+        resultsWithMultipleRecommends: [],
+      };
     },
   };
 };
