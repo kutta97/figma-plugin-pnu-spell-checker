@@ -12,6 +12,11 @@ export const resultListSelector = createSelector(
   (state) => state.resultList
 );
 
+export const resultWithMultipleRecommendListSelector = createSelector(
+  resultSelector,
+  (state) => state.resultsWithMultipleRecommendList
+);
+
 export const selectedResultCountSelector = createSelector(
   resultSelector,
   (state) => state.resultList.filter((result) => result.checked).length

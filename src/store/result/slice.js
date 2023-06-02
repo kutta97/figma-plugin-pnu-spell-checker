@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   name: 'initial name home',
   resultList: [],
-  resultWithMoreThanOneRecommends: [],
+  resultsWithMultipleRecommendList: [],
 };
 
 export const resultSlice = createSlice({
@@ -16,9 +16,8 @@ export const resultSlice = createSlice({
       state.resultList = results.results.map((result) => {
         return { ...result, checked: false };
       });
-      state.resultWithMoreThanOneRecommends = results.manyRecommendResults.map(
-        (result) => result
-      );
+      state.resultsWithMultipleRecommendList =
+        results.resultsWithMultipleRecommends.map((result) => result);
     },
     toggleAllResultSelection: (state, action) => {
       const isChecked = action.payload;
