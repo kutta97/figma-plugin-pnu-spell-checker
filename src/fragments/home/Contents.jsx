@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Font16W400 } from '@assets/styles/fonts';
-
 import { Toast } from '@fragments/toast/Toast';
 
 import { DefaultHomeContents } from './DefaultHomeContents';
@@ -41,10 +39,6 @@ const HomeContentsStyled = styled.article`
   .default {
     position: absolute;
     top: 242px;
-  }
-
-  p {
-    ${Font16W400};
   }
 
   span {

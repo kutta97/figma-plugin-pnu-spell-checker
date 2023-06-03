@@ -6,6 +6,8 @@ import { NodeLabel } from '@components/label/NodeLabel';
 import { useAppSelector } from '@store/hook';
 import { selectedNodeSelector } from '@store/node';
 
+import { Font15W400 } from '@assets/styles/fonts';
+
 export const NodeSelectedHomeContents = (props) => {
   const selectedTextNode = useAppSelector(selectedNodeSelector);
   return (
@@ -27,6 +29,12 @@ const NodeSelectedHomeContentsStyled = styled.section`
   gap: 20px;
   align-items: center;
   padding: 0 16px;
+
+  color: ${({ theme }) => theme.colors.gray90};
+
+  p {
+    ${Font15W400}
+  }
 `;
 
 const SelectedTextNodeContents = styled.div`

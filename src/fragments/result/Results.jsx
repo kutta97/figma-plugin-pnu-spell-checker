@@ -2,16 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { useAppSelector } from '@store/hook';
-import { resultListSelector } from '@store/result';
+import { resultSelector } from '@store/result';
 
 import { ResultList } from '@fragments/result/ResultList';
 
+import { ResultMultipleRecommendList } from './ResultMultipleRecommendList';
+
 export const Results = () => {
-  const resultList = useAppSelector(resultListSelector);
+  const { resultList, resultWithMultipleRecommendList } =
+    useAppSelector(resultSelector);
 
   return (
     <ResultsStyled>
       <ResultList resultList={resultList} />
+      {resultWithMultipleRecommendList.length > 0 && (
+        <ResultMultipleRecommendList
+          resultWithMultipleRecommendList={resultWithMultipleRecommendList}
+        />
+      )}
     </ResultsStyled>
   );
 };
@@ -24,4 +32,5 @@ const ResultsStyled = styled.section`
   height: 100%;
   max-height: 548px;
   padding-top: 20px;
+  padding-bottom: 20px;
 `;

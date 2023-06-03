@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import { NodeLabel } from '@components/label/NodeLabel';
 
+import { Font15W400 } from '@assets/styles/fonts';
+
 export const DefaultHomeContents = (props) => {
   return (
     <DefaultHomeContentsStyled {...props}>
@@ -21,4 +23,10 @@ const DefaultHomeContentsStyled = styled.section`
   gap: 8px;
   align-items: center;
   padding: 16px 20px;
+
+  color: ${({ theme }) => theme.colors.gray90};
+
+  p {
+    ${Font15W400}
+  }
 `;

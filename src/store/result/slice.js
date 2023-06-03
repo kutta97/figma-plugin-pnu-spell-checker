@@ -1,8 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { deepCopy } from '@utils/deepCopy';
+
 const initialState = {
   name: 'initial name home',
   resultList: [],
+  resultWithMultipleRecommendList: [],
 };
 
 export const resultSlice = createSlice({
@@ -11,10 +14,14 @@ export const resultSlice = createSlice({
   reducers: {
     convertListenerConnect: (state, action) => {},
     setResultList: (state, action) => {
-      const results = action.payload;
+      const { results, resultsWithMultipleRecommends } = action.payload;
+
       state.resultList = results.map((result) => {
         return { ...result, checked: false };
       });
+      state.resultWithMultipleRecommendList = deepCopy(
+        resultsWithMultipleRecommends
+      );
     },
     toggleAllResultSelection: (state, action) => {
       const isChecked = action.payload;

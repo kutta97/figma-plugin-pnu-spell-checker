@@ -5,7 +5,7 @@ import CheckedIcon from '@assets/icons/check/ic_checkbox_checked.svg';
 import UncheckedIcon from '@assets/icons/check/ic_checkbox_unchecked.svg';
 
 export const Checkbox = (props) => {
-  const { checked, onCheck } = props;
+  const { checked, onCheck, className } = props;
 
   const [isChecked, setIsChecked] = useState(checked ?? false);
 
@@ -19,7 +19,7 @@ export const Checkbox = (props) => {
   };
 
   return (
-    <CheckboxStyled {...props}>
+    <CheckboxStyled className={className}>
       <CheckboxInput
         type="checkbox"
         checked={isChecked}
