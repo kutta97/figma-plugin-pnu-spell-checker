@@ -1,8 +1,5 @@
 import { PAGE_TYPE } from '@consts/index';
 
-import request from '@utils/request';
-import { sleep } from '@utils/timer';
-
 import { convertListenerConnect } from '@store/result/index';
 import { nextPage } from '@store/root';
 
@@ -11,13 +8,30 @@ const convertListener = async (action, listenerApi) => {
 
   dispatch(nextPage({ page: PAGE_TYPE.CONVERTING }));
 
-  try {
-    // TODO Change promise function to Converting
-    await request.promise(() => sleep(3000));
-    dispatch(nextPage({ page: PAGE_TYPE.COMPLETE, isNotRecord: true }));
-  } catch (e) {
-    /* empty */
-  }
+  const { selectedNodes } = listenerApi.getState().nodeReducer;
+  const textNodeId = selectedNodes[0].id;
+  const originalText = selectedNodes[0].value;
+
+  const { resultList } = listenerApi.getState().resultReducer;
+  const convertList = resultList.filter((result) => result.checked);
+
+  const convertedText = convertList.reduce((text, convert) => {
+    const { beforeText, afterText } = convert.data;
+    return text.replace(beforeText, afterText);
+  }, originalText);
+
+  window.parent.postMessage(
+    {
+      pluginMessage: {
+        type: 'convert',
+        convert: {
+          id: textNodeId,
+          text: convertedText,
+        },
+      },
+    },
+    '*'
+  );
 };
 
 const homeListeners = [
