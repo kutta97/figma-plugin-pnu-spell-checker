@@ -3,7 +3,10 @@ import styled from 'styled-components';
 
 import { ConvertingContents } from '@fragments/converting/Contents';
 
+import { useConvertingVM } from './convertingVM';
+
 export const Converting = () => {
+  useConvertingVM();
   return (
     <ConvertingStyled>
       <ConvertingContents />
