@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import { PAGE_TYPE } from '@consts/index';
 
 import { fromMessage } from '@utils/messages';
@@ -35,10 +33,5 @@ export const useConvertingVM = () => {
     }
   };
 
-  useEffect(() => {
-    window.addEventListener('message', processConversionResult);
-    return () => {
-      window.removeEventListener('message', processConversionResult);
-    };
-  });
+  return { processConversionResult };
 };
