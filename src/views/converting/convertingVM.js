@@ -3,7 +3,7 @@ import { CONVERSION_RESULT_STATUS, PAGE_TYPE } from '@consts/index';
 import { fromMessage } from '@utils/messages';
 
 import { useAppDispatch } from '@store/hook';
-import { nextPage, pageClear } from '@store/root';
+import { nextPage, prevPage } from '@store/root';
 import { showToast } from '@store/toast';
 
 export const useConvertingVM = () => {
@@ -15,15 +15,10 @@ export const useConvertingVM = () => {
       if (data.pluginMessage.query !== 'conversionresult') return;
       const { status, msg } = data.pluginMessage.result;
 
-      console.log('conversion result');
-      console.log('status', status);
-      console.log('msg', msg);
-
       switch (status) {
         case CONVERSION_RESULT_STATUS.ERROR: {
-          console.log('show toast msg', msg);
           dispatch(showToast(msg));
-          dispatch(pageClear());
+          dispatch(prevPage());
           break;
         }
         case CONVERSION_RESULT_STATUS.SUCCESS: {
