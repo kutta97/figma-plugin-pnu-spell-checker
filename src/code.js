@@ -1,3 +1,5 @@
+import { CONVERSION_RESULT_MSG, CONVERSION_RESULT_STATUS } from './consts';
+
 const createItem = (node) => {
   const { id, name, type } = node;
   const value = node.characters;
@@ -65,22 +67,22 @@ async function loadFonts(node) {
 async function convertTextNodeValue(id, text) {
   if (figma.currentPage.selection.length !== 1) {
     return {
-      status: 'ERROR',
-      msg: 'Select a single node',
+      status: CONVERSION_RESULT_STATUS.ERROR,
+      msg: CONVERSION_RESULT_MSG.SELECT_SINGLE_NODE,
     };
   }
 
   const node = figma.currentPage.selection[0];
   if (node.type !== 'TEXT') {
     return {
-      status: 'ERROR',
-      msg: 'Select a single text node.',
+      status: CONVERSION_RESULT_STATUS.ERROR,
+      msg: CONVERSION_RESULT_MSG.SELECT_SINGLE_NODE,
     };
   }
   if (node.id !== id) {
     return {
-      status: 'ERROR',
-      msg: 'Do not change node selection.',
+      status: CONVERSION_RESULT_STATUS.ERROR,
+      msg: CONVERSION_RESULT_MSG.DO_NOT_CHANGE_SELECTION,
     };
   }
 
@@ -89,8 +91,8 @@ async function convertTextNodeValue(id, text) {
   figma.currentPage.selection = [node];
 
   return {
-    status: 'SUCCESS',
-    msg: 'Text Node converted successfully.',
+    status: CONVERSION_RESULT_STATUS.SUCCESS,
+    msg: CONVERSION_RESULT_MSG.CONVERSION_COMPLETE,
   };
 }
 

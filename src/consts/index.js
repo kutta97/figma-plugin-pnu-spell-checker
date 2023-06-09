@@ -21,3 +21,14 @@ export const FILTER = {
     text: '띄어쓰기',
   },
 };
+
+export const CONVERSION_RESULT_STATUS = {
+  ERROR: 'ERROR',
+  SUCCESS: 'SUCCESS',
+};
+
+export const CONVERSION_RESULT_MSG = {
+  SELECT_SINGLE_NODE: 'Select a single text node.',
+  DO_NOT_CHANGE_SELECTION: 'Do not change node selection.',
+  CONVERSION_COMPLETE: 'Text Node converted successfully.',
+};
