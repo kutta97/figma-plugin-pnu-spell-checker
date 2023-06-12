@@ -28,7 +28,11 @@ export const CONVERSION_RESULT_STATUS = {
 };
 
 export const CONVERSION_RESULT_MSG = {
-  SELECT_SINGLE_NODE: 'Select a single text node.',
-  DO_NOT_CHANGE_SELECTION: 'Do not change node selection.',
-  CONVERSION_COMPLETE: 'Text Node converted successfully.',
+  ERROR: {
+    SELECT_SINGLE_NODE: 'Select a single text node.',
+    DO_NOT_CHANGE_SELECTION: 'Do not change node selection.',
+  },
+  SUCCESS: {
+    CONVERSION_COMPLETE: 'Text Node converted successfully.',
+  },
 };

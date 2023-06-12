@@ -68,7 +68,7 @@ async function convertTextNodeValue(id, text) {
   if (figma.currentPage.selection.length !== 1) {
     return {
       status: CONVERSION_RESULT_STATUS.ERROR,
-      msg: CONVERSION_RESULT_MSG.SELECT_SINGLE_NODE,
+      msg: CONVERSION_RESULT_MSG.ERROR.SELECT_SINGLE_NODE,
     };
   }
 
@@ -76,13 +76,13 @@ async function convertTextNodeValue(id, text) {
   if (node.type !== 'TEXT') {
     return {
       status: CONVERSION_RESULT_STATUS.ERROR,
-      msg: CONVERSION_RESULT_MSG.SELECT_SINGLE_NODE,
+      msg: CONVERSION_RESULT_MSG.ERROR.SELECT_SINGLE_NODE,
     };
   }
   if (node.id !== id) {
     return {
       status: CONVERSION_RESULT_STATUS.ERROR,
-      msg: CONVERSION_RESULT_MSG.DO_NOT_CHANGE_SELECTION,
+      msg: CONVERSION_RESULT_MSG.ERROR.DO_NOT_CHANGE_SELECTION,
     };
   }
 
@@ -92,7 +92,7 @@ async function convertTextNodeValue(id, text) {
 
   return {
     status: CONVERSION_RESULT_STATUS.SUCCESS,
-    msg: CONVERSION_RESULT_MSG.CONVERSION_COMPLETE,
+    msg: CONVERSION_RESULT_MSG.SUCCESS.CONVERSION_COMPLETE,
   };
 }
 
