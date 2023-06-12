@@ -1,3 +1,5 @@
+import { CONVERSION_RESULT_MSG, CONVERSION_RESULT_STATUS } from './consts';
+
 const createItem = (node) => {
   const { id, name, type } = node;
   const value = node.characters;
@@ -57,14 +59,60 @@ function getSelectedNodesWithText(nodes) {
   return items;
 }
 
+async function loadFonts(node) {
+  const allFonts = node.getRangeAllFontNames(0, node.characters.length);
+  await Promise.all(allFonts.map(figma.loadFontAsync));
+}
+
+async function convertTextNodeValue(id, text) {
+  const node = figma.getNodeById(id);
+
+  if (node.hasMissingFont) {
+    return {
+      status: CONVERSION_RESULT_STATUS.ERROR,
+      msg: CONVERSION_RESULT_MSG.ERROR.MISSING_FONT,
+    };
+  }
+
+  try {
+    await loadFonts(node);
+  } catch (e) {
+    console.error(e);
+  }
+
+  node.characters = text;
+  figma.currentPage.selection = [node];
+
+  return {
+    status: CONVERSION_RESULT_STATUS.SUCCESS,
+    msg: CONVERSION_RESULT_MSG.SUCCESS.CONVERSION_COMPLETE,
+  };
+}
+
 figma.showUI(__html__, {
   width: 400,
   height: 680,
   title: '한국어 맞춤법 검사기',
 });
 
-figma.ui.onmessage = (msg) => {
-  if (msg.quit) figma.closePlugin();
+figma.ui.onmessage = async (msg) => {
+  switch (msg.type) {
+    case 'quit': {
+      figma.closePlugin();
+      break;
+    }
+    case 'convert': {
+      const { id, text } = msg.convert;
+      const result = await convertTextNodeValue(id, text);
+      figma.ui.postMessage({
+        query: 'conversionresult',
+        result,
+      });
+      break;
+    }
+    default:
+      break;
+  }
 };
 
 figma.on('selectionchange', () => {
