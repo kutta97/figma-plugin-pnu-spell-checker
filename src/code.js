@@ -86,6 +86,13 @@ async function convertTextNodeValue(id, text) {
     };
   }
 
+  if (node.hasMissingFont) {
+    return {
+      status: CONVERSION_RESULT_STATUS.ERROR,
+      msg: CONVERSION_RESULT_MSG.ERROR.MISSING_FONT,
+    };
+  }
+
   try {
     await loadFonts(node);
   } catch (e) {

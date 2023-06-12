@@ -31,6 +31,7 @@ export const CONVERSION_RESULT_MSG = {
   ERROR: {
     SELECT_SINGLE_NODE: 'Select a single text node.',
     DO_NOT_CHANGE_SELECTION: 'Do not change node selection.',
+    MISSING_FONT: 'You have missing font',
   },
   SUCCESS: {
     CONVERSION_COMPLETE: 'Text Node converted successfully.',
