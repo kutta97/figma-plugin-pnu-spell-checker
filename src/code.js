@@ -65,26 +65,7 @@ async function loadFonts(node) {
 }
 
 async function convertTextNodeValue(id, text) {
-  if (figma.currentPage.selection.length !== 1) {
-    return {
-      status: CONVERSION_RESULT_STATUS.ERROR,
-      msg: CONVERSION_RESULT_MSG.ERROR.SELECT_SINGLE_NODE,
-    };
-  }
-
-  const node = figma.currentPage.selection[0];
-  if (node.type !== 'TEXT') {
-    return {
-      status: CONVERSION_RESULT_STATUS.ERROR,
-      msg: CONVERSION_RESULT_MSG.ERROR.SELECT_SINGLE_NODE,
-    };
-  }
-  if (node.id !== id) {
-    return {
-      status: CONVERSION_RESULT_STATUS.ERROR,
-      msg: CONVERSION_RESULT_MSG.ERROR.DO_NOT_CHANGE_SELECTION,
-    };
-  }
+  const node = figma.getNodeById(id);
 
   if (node.hasMissingFont) {
     return {
@@ -98,6 +79,7 @@ async function convertTextNodeValue(id, text) {
   } catch (e) {
     console.error(e);
   }
+
   node.characters = text;
   figma.currentPage.selection = [node];
 
