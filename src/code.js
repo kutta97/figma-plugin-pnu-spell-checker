@@ -86,7 +86,11 @@ async function convertTextNodeValue(id, text) {
     };
   }
 
-  await loadFonts(node);
+  try {
+    await loadFonts(node);
+  } catch (e) {
+    console.error(e);
+  }
   node.characters = text;
   figma.currentPage.selection = [node];
 
