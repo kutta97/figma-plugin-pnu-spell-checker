@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '@store/hook';
 import {
   convertListenerConnect,
-  resultCountSelector,
+  resultSelector,
   toggleAllResultSelection,
 } from '@store/result';
 import { selectedResultCountSelector } from '@store/result/selector';
@@ -14,8 +14,13 @@ export const useResultVM = () => {
   const dispatch = useAppDispatch();
   const { clear } = usePageRouter();
 
-  const resultCount = useAppSelector(resultCountSelector);
+  const { resultList, resultWithMultipleRecommendList } =
+    useAppSelector(resultSelector);
   const selectedResultCount = useAppSelector(selectedResultCountSelector);
+
+  const resultCount = useMemo(() => {
+    return resultList.length + resultWithMultipleRecommendList.length;
+  }, [resultList, resultWithMultipleRecommendList]);
 
   const isResultEmpty = useMemo(() => {
     return resultCount === 0;
@@ -26,8 +31,8 @@ export const useResultVM = () => {
   }, [selectedResultCount]);
 
   const isAllResultSelected = useMemo(() => {
-    return resultCount === selectedResultCount;
-  }, [resultCount, selectedResultCount]);
+    return resultList.length === selectedResultCount;
+  }, [resultList, selectedResultCount]);
 
   const toggleCheckAll = (isChecked) => {
     dispatch(toggleAllResultSelection(isChecked));
