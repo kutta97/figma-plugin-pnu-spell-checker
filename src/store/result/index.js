@@ -9,7 +9,6 @@ export const {
 } = resultSlice.actions;
 export const {
   resultSelector,
-  resultCountSelector,
   resultListSelector,
   selectedResultCountSelector,
 } = selector;
