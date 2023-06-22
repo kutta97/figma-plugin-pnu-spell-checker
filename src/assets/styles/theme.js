@@ -9,6 +9,7 @@ const colors = {
   gray3: '#F9F9F9',
 
   white: '#FFFFFF',
+  keycolor: '#27A2F8',
 
   red: '#E72106',
   violet: '#7B67FB',
