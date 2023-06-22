@@ -12,6 +12,7 @@ import GlobalStyle from '@assets/styles/globalStyles';
 import theme from '@assets/styles/theme';
 
 import { Layout } from '@fragments/layout/Layout';
+import { Modal } from '@fragments/modal/Modal';
 import { Toast } from '@fragments/toast/Toast';
 
 import { Checking } from '@views/checking';
@@ -62,6 +63,7 @@ function App() {
       <GlobalStyle />
       <Layout>{renderBody()}</Layout>
       <Toast />
+      <Modal />
     </ThemeProvider>
   );
 }
