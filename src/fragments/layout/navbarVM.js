@@ -12,7 +12,6 @@ import { usePageRouter } from '@hooks/usePageRouter';
 export const useNavbarVM = () => {
   const dispatch = useAppDispatch();
   const { pageType } = useSelector(rootSelector);
-  // TODO get count of result
 
   const { prev } = usePageRouter();
 
