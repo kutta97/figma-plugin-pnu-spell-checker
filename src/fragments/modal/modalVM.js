@@ -1,14 +1,9 @@
 import { useAppDispatch, useAppSelector } from '@store/hook';
-import {
-  hideModal,
-  modalTypeSelector,
-  modalVisibleSelector,
-} from '@store/modal';
+import { hideModal, modalSelector } from '@store/modal';
 
 export const useModalVM = () => {
   const dispatch = useAppDispatch();
-  const isVisible = useAppSelector(modalVisibleSelector);
-  const type = useAppSelector(modalTypeSelector);
+  const { isVisible, type } = useAppSelector(modalSelector);
 
   const handleCloseButtonClick = () => {
     dispatch(hideModal());
