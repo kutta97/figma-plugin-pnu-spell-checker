@@ -2,6 +2,8 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 
+import { Z_INDEX } from '@consts/index';
+
 import { InfoModal } from '@components/modal/InfoModal';
 
 import Close from '@assets/icons/modal/ic_close.svg';
@@ -44,7 +46,7 @@ const ModalOverlay = styled.div`
   background: rgba(34, 34, 34, 0.8);
 
   position: fixed;
-  z-index: 2000;
+  z-index: ${Z_INDEX.OVERLAY};
   top: 0;
 `;
 
@@ -57,7 +59,7 @@ const ModalContainer = styled.div`
   background: ${({ theme }) => theme.colors.white};
 
   position: relative;
-  z-index: 3000;
+  z-index: ${Z_INDEX.MODAL};
 
   .close-button {
     position: absolute;

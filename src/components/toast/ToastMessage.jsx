@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
+import { Z_INDEX } from '@consts/index';
+
 import WarningIcon from '@assets/icons/toast/ic_warning.svg';
 import { Font15W400 } from '@assets/styles/fonts';
 
@@ -41,7 +43,7 @@ const ToastMessageStyled = styled.div`
   border-radius: 8px;
 
   position: fixed;
-  z-index: 1000;
+  z-index: ${Z_INDEX.TOAST};
   top: 13.5%;
   left: 50%;
   transform: translate(-50%, -50%);
