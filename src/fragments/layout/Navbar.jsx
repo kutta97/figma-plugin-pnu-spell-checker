@@ -8,17 +8,22 @@ import { Font18W700 } from '@assets/styles/fonts';
 import { useNavbarVM } from './navbarVM';
 
 export function Navbar() {
-  const { pageTitle, isVisibleBackButton, isVisibleLeftButton, prev } =
-    useNavbarVM();
+  const {
+    pageTitle,
+    isVisibleBackButton,
+    isVisibleLeftButton,
+    handlePrevClick,
+    handleInfoClick,
+  } = useNavbarVM();
 
   return (
     <NavbarStyled>
       {isVisibleLeftButton && (
         <div className="left-icon">
           {isVisibleBackButton ? (
-            <Back width={24} height={24} onClick={prev} />
+            <Back width={24} height={24} onClick={handlePrevClick} />
           ) : (
-            <Info width={24} height={24} />
+            <Info width={24} height={24} onClick={handleInfoClick} />
           )}
         </div>
       )}

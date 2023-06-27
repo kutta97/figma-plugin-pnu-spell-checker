@@ -37,3 +37,9 @@ export const CONVERSION_RESULT_MSG = {
     CONVERSION_COMPLETE: 'Text Node converted successfully.',
   },
 };
+
+export const Z_INDEX = {
+  OVERLAY: 1000,
+  MODAL: 2000,
+  TOAST: 3000,
+};
